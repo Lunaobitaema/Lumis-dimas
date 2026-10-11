@@ -1,0 +1,3727 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMIS — Рекламна продукція</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@200;300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0c0a08;
+  --bg2:       #111009;
+  --bg3:       #161310;
+  --white:     #f5f0e8;
+  --gold:      #c8a96e;
+  --gold2:     #e2c38a;
+  --gray:      #5a5550;
+  --gray2:     #888078;
+  --border:    rgba(200,169,110,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+/* Touch devices: restore cursor so taps work */
+@media (pointer: coarse) {
+  body, body * { cursor: auto !important; }
+  .cursor, .cursor-ring { display: none !important; }
+}
+
+/* ── CUSTOM CURSOR ── */
+/* Desktop custom cursor for non-touch */
+@media (pointer: fine) {
+  .use-custom-cursor { cursor: none; }
+  .use-custom-cursor a,
+  .use-custom-cursor button,
+  .use-custom-cursor [onclick],
+  .use-custom-cursor input,
+  .use-custom-cursor textarea,
+  .use-custom-cursor select { cursor: none; }
+}
+.cursor {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s;
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 1px solid rgba(200,169,110,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.18s ease;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 60px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s, background 0.4s;
+}
+nav.scrolled {
+  border-color: var(--border);
+  background: rgba(12,10,8,0.9);
+  backdrop-filter: blur(12px);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+.nav-logo-mark svg { width: 32px; height: 32px; }
+.nav-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: 0.22em;
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray2);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 10px 22px;
+  transition: all 0.3s;
+}
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ambient glow */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 500px;
+  background: radial-gradient(ellipse, rgba(200,169,110,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* grid lines */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200,169,110,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,169,110,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-mark {
+  width: 80px; height: 80px;
+  margin: 0 auto 36px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.1s forwards;
+}
+.hero-mark svg { width: 100%; height: 100%; }
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(56px, 10vw, 110px);
+  letter-spacing: 0.18em;
+  line-height: 1;
+  color: var(--white);
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--gray2);
+  margin-top: 24px;
+  max-width: 480px;
+  line-height: 2;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  margin-top: 52px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.7s forwards;
+}
+
+.btn-primary {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 16px 36px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.btn-primary:hover { background: var(--gold2); }
+
+.btn-outline {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 1px solid var(--border);
+  padding: 16px 36px;
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1s forwards;
+}
+.hero-scroll span {
+  font-size: 7.5px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50%      { opacity: 1;   transform: scaleY(1.1); }
+}
+
+/* ── SHARED SECTION ── */
+section { padding: 120px 60px; }
+
+.section-label {
+  font-size: 8.5px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 5vw, 56px);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.section-title em { font-style: italic; color: var(--gold); }
+
+.thin-line {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+  margin: 32px 0;
+}
+
+/* ── SERVICES ── */
+.services {
+  background: var(--bg2);
+  position: relative;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 70px;
+  border: 1px solid var(--border);
+}
+
+.service-card {
+  background: var(--bg2);
+  padding: 44px 36px;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover { background: var(--bg3); }
+
+.service-icon {
+  width: 42px; height: 42px;
+  margin-bottom: 28px;
+  opacity: 0.7;
+}
+
+.service-num {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--gray);
+  margin-bottom: 16px;
+}
+
+.service-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.service-desc {
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--gray2);
+  letter-spacing: 0.04em;
+}
+
+/* ── ABOUT ── */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+  height: 460px;
+}
+
+.about-box {
+  position: absolute;
+  border: 1px solid var(--border);
+}
+.about-box-1 {
+  top: 0; left: 0;
+  right: 60px; bottom: 60px;
+  background: var(--bg3);
+}
+.about-box-2 {
+  bottom: 0; right: 0;
+  width: 200px; height: 200px;
+  background: var(--bg2);
+  border-color: rgba(200,169,110,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.about-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.about-stat-label {
+  font-size: 8px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gray2);
+}
+
+/* SVG inside about box */
+.about-icon-wrap {
+  position: absolute;
+  top: 50%; left: 44%;
+  transform: translate(-50%, -50%);
+}
+.about-icon-wrap svg {
+  width: 100px; height: 100px;
+  opacity: 0.12;
+}
+
+.about-text p {
+  font-size: 12px;
+  line-height: 2.1;
+  color: var(--gray2);
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.about-features {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gray2);
+}
+.feature-dot {
+  width: 4px; height: 4px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── PORTFOLIO ── */
+.portfolio { background: var(--bg2); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 70px;
+  border: 1px solid var(--border);
+}
+
+.portfolio-item {
+  background: var(--bg3);
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.portfolio-item > div:first-child { transition: background 0.45s ease !important; }
+.portfolio-item:hover > div:first-child { background: rgba(12,10,8,0.15) !important; }
+.portfolio-item:hover .pi-label { opacity: 1; transform: translateY(0); }
+.portfolio-item:hover img { transform: scale(1.06); }
+
+.pi-icon { opacity: 0.15; }
+.pi-icon svg { width: 52px; height: 52px; }
+
+.portfolio-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease !important;
+}
+
+.pi-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px 24px;
+  background: linear-gradient(to top, rgba(12,10,8,0.92) 0%, rgba(12,10,8,0.3) 70%, transparent 100%);
+  opacity: 1;
+  transform: translateY(4px);
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+  z-index: 2;
+}
+.portfolio-item:hover .pi-label {
+  transform: translateY(0);
+}
+.pi-label-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+.pi-label-type {
+  font-size: 8px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 4px;
+}
+
+/* placeholder glow items */
+.portfolio-item:nth-child(1) { background: #100e0b; }
+.portfolio-item:nth-child(2) { background: #0f0d0b; }
+.portfolio-item:nth-child(3) { background: #11100c; }
+.portfolio-item:nth-child(4) { background: #0d0c0a; }
+.portfolio-item:nth-child(5) { background: #10100c; }
+.portfolio-item:nth-child(6) { background: #0e0d0b; }
+
+/* ── PROCESS ── */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 70px;
+  border: 1px solid var(--border);
+}
+.step {
+  padding: 40px 32px;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+.step:last-child { border-right: none; }
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: rgba(200,169,110,0.12);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.step-name {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.step-desc {
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--gray2);
+}
+
+/* ── CONTACT ── */
+.contact-section {
+  background: var(--bg2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.contact-info { padding-top: 8px; }
+
+.contact-block {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.contact-item {}
+.contact-item-label {
+  font-size: 8px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+.contact-item-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+.contact-item-value a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.contact-item-value a:hover { color: var(--gold); }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row { display: flex; gap: 16px; }
+.form-group { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+.form-label {
+  font-size: 8px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.form-input, .form-textarea {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+  resize: none;
+}
+.form-input:focus, .form-textarea:focus {
+  border-color: rgba(200,169,110,0.5);
+}
+.form-input::placeholder, .form-textarea::placeholder {
+  color: var(--gray);
+  font-size: 11px;
+}
+
+.form-textarea { height: 120px; }
+
+.form-submit {
+  background: var(--gold);
+  color: var(--bg);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border: none;
+  padding: 16px 40px;
+  cursor: none;
+  align-self: flex-start;
+  transition: background 0.3s;
+}
+.form-submit:hover { background: var(--gold2); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 40px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+}
+
+.footer-copy {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--gray);
+}
+
+.footer-links {
+  display: flex;
+  gap: 28px;
+}
+.footer-links a {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ── INSTAGRAM ── */
+.ig-icon-btn {
+  color: var(--gray2);
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+}
+.ig-icon-btn:hover { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── CAROUSEL ── */
+#carousel::-webkit-scrollbar { display: none; }
+
+.car-card {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  cursor: none;
+}
+
+.car-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  transition: border-color 0.4s, transform 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.car-circle svg { position: relative; z-index: 1; }
+.car-circle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(200,169,110,0) 40%, rgba(200,169,110,0.06) 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.car-card:hover .car-circle {
+  border-color: rgba(200,169,110,0.5);
+  transform: scale(1.03);
+}
+.car-card:hover .car-circle::after { opacity: 1; }
+
+.car-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray2);
+  font-weight: 300;
+  text-align: center;
+  transition: color 0.3s;
+}
+.car-card:hover .car-label { color: var(--gold); }
+
+.car-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gray);
+  transition: all 0.3s;
+}
+.car-dot.active {
+  background: var(--gold);
+  width: 22px;
+  border-radius: 3px;
+}
+
+
+/* ══════════════════════════════
+   ADMIN PANEL
+══════════════════════════════ */
+#admin-trigger {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 48px; height: 48px;
+  background: var(--gold);
+  border: none;
+  border-radius: 0;
+  display: flex; align-items: center; justify-content: center;
+  cursor: none;
+  z-index: 1000;
+  box-shadow: 0 4px 24px rgba(200,169,110,0.3);
+  transition: background 0.3s, transform 0.3s;
+}
+#admin-trigger:hover { background: var(--gold2); transform: scale(1.05); }
+#admin-trigger svg { color: var(--bg); }
+
+#admin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,8,6,0.7);
+  z-index: 2000;
+  display: none;
+  backdrop-filter: blur(4px);
+}
+#admin-overlay.open { display: block; }
+
+#admin-panel {
+  position: fixed;
+  top: 0; right: -480px;
+  width: 480px; height: 100vh;
+  background: #0f0d0a;
+  border-left: 1px solid var(--border);
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s cubic-bezier(0.16,1,0.3,1);
+  overflow: hidden;
+}
+#admin-panel.open { right: 0; }
+
+.adm-header {
+  padding: 28px 32px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.adm-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--white);
+}
+.adm-title span { color: var(--gold); }
+.adm-close {
+  background: none; border: 1px solid var(--border);
+  color: var(--gray2); width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: none; transition: all 0.3s;
+}
+.adm-close:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Tabs */
+.adm-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.adm-tab {
+  flex: 1;
+  padding: 14px 8px;
+  font-size: 8.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: none;
+  transition: all 0.3s;
+}
+.adm-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.adm-tab:hover { color: var(--white); }
+
+/* Content */
+.adm-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.adm-pane { display: none; }
+.adm-pane.active { display: block; }
+
+.adm-section {
+  margin-bottom: 32px;
+}
+.adm-section-title {
+  font-size: 8px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.adm-field {
+  margin-bottom: 14px;
+}
+.adm-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 6px;
+  display: block;
+}
+.adm-input, .adm-textarea {
+  width: 100%;
+  background: rgba(200,169,110,0.04);
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.3s;
+  resize: none;
+}
+.adm-input:focus, .adm-textarea:focus { border-color: rgba(200,169,110,0.5); }
+.adm-textarea { height: 70px; }
+
+.adm-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.adm-photo-slot {
+  aspect-ratio: 4/3;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: none;
+  transition: border-color 0.3s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.adm-photo-slot:hover { border-color: rgba(200,169,110,0.4); background: var(--bg2); }
+.adm-photo-slot input[type=file] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+}
+.adm-photo-slot svg { color: var(--gray); }
+.adm-photo-slot span {
+  font-size: 8px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gray);
+}
+.adm-photo-slot img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.adm-btn-sm {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 9px 14px;
+  cursor: none;
+  transition: all 0.3s;
+  width: auto;
+}
+.adm-btn-sm:hover { background: rgba(200,169,110,0.08); }
+.adm-btn {
+  width: 100%;
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 13px;
+  cursor: none;
+  transition: background 0.3s;
+  margin-top: 4px;
+}
+.adm-btn:hover { background: var(--gold2); }
+.adm-btn.secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gray2);
+  margin-top: 8px;
+}
+.adm-btn.secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+.adm-toast {
+  position: fixed;
+  bottom: 90px; right: 28px;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.adm-toast.show { opacity: 1; transform: translateY(0); }
+
+.adm-color-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.adm-color-row input[type=color] {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  background: none;
+  padding: 2px;
+  cursor: pointer;
+}
+.adm-color-row .adm-input { flex: 1; }
+
+.adm-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(200,169,110,0.07);
+}
+.adm-toggle-label {
+  font-size: 11px;
+  color: var(--gray2);
+  letter-spacing: 0.06em;
+}
+.adm-toggle {
+  width: 36px; height: 20px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.adm-toggle.on { background: var(--gold); border-color: var(--gold); }
+.adm-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--gray);
+  transition: all 0.3s;
+}
+.adm-toggle.on::after { left: 18px; background: var(--bg); }
+
+/* Password screen */
+#admin-lock {
+  position: absolute;
+  inset: 0;
+  background: #0f0d0a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+  padding: 40px;
+}
+#admin-lock.hidden { display: none; }
+.lock-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+.lock-sub {
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-align: center;
+}
+.lock-err {
+  font-size: 10px;
+  color: #c86e6e;
+  letter-spacing: 0.1em;
+  min-height: 16px;
+}
+
+
+/* ══════════════════════════════
+   LIGHT THEME
+══════════════════════════════ */
+body.light-mode {
+  --bg:        #fdf6ed;
+  --bg2:       #f5ece0;
+  --bg3:       #ede3d5;
+  --white:     #2e2318;
+  --gold:      #9e6f34;
+  --gold2:     #b8833e;
+  --gray:      #b8a898;
+  --gray2:     #7a6858;
+  --border:    rgba(158,111,52,0.16);
+  background:  #fdf6ed;
+  color:       #2e2318;
+}
+body.light-mode nav.scrolled {
+  background: rgba(247,243,238,0.92);
+}
+body.light-mode .hero::before {
+  background: radial-gradient(ellipse, rgba(160,120,58,0.08) 0%, transparent 65%);
+}
+body.light-mode .hero::after {
+  background-image:
+    linear-gradient(rgba(160,120,58,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160,120,58,0.05) 1px, transparent 1px);
+}
+body.light-mode .services,
+body.light-mode .portfolio,
+body.light-mode .contact-section,
+body.light-mode #admin-panel,
+body.light-mode #admin-lock { background: var(--bg2); }
+body.light-mode .service-card { background: var(--bg2); }
+body.light-mode .service-card:hover { background: var(--bg3); }
+body.light-mode .about-box-1 { background: var(--bg3); }
+body.light-mode .about-box-2 { background: var(--bg2); }
+body.light-mode .portfolio-item { background: var(--bg3) !important; }
+body.light-mode .step { background: transparent; }
+body.light-mode .adm-input,
+body.light-mode .adm-textarea { background: rgba(0,0,0,0.03); color: var(--white); }
+body.light-mode .adm-photo-slot { background: var(--bg3); }
+body.light-mode #admin-panel { background: var(--bg2); }
+body.light-mode #admin-lock { background: var(--bg2); }
+body.light-mode /* Desktop custom cursor for non-touch */
+@media (pointer: fine) {
+  .use-custom-cursor { cursor: none; }
+  .use-custom-cursor a,
+  .use-custom-cursor button,
+  .use-custom-cursor [onclick],
+  .use-custom-cursor input,
+  .use-custom-cursor textarea,
+  .use-custom-cursor select { cursor: none; }
+}
+.cursor { background: var(--gold); }
+
+/* Theme toggle button */
+.theme-toggle {
+  width: 40px; height: 40px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--gray2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: none;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  position: absolute;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.theme-toggle .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.5); }
+.theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+
+body.light-mode .theme-toggle .icon-sun  { opacity: 1; transform: rotate(0deg) scale(1); }
+body.light-mode .theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+
+/* Smooth transition on theme switch */
+/* Theme transitions — targeted only, no universal override */
+nav, nav *, section, section *,
+footer, footer *, .hero, .hero *,
+.service-card, .portfolio-item, .step,
+.contact-section, .about, #categories,
+.marquee-section, .adm-pane, .adm-pane *,
+#admin-panel, #calc-popup {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+/* Keep animations unaffected */
+.hero-mark svg *, .scroll-line, .draw, .draw2,
+.marquee-track, .car-circle, .car-card {
+  transition: unset;
+}
+
+/* ── RESPONSIVE ── */
+
+/* ── MARQUEE ── */
+.marquee-section {
+  padding: 0;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll 22s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-inner {
+  display: flex;
+  align-items: center;
+  padding: 22px 0;
+  gap: 0;
+  flex-shrink: 0;
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  white-space: nowrap;
+}
+.marquee-item em { color: var(--gold); font-style: italic; }
+.marquee-dot {
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+.guarantee-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 0 60px;
+}
+.guarantee-block, .materials-block {
+  padding: 60px 52px;
+  background: var(--bg2);
+}
+.guarantee-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+.guarantee-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.guarantee-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+.guarantee-item-title {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.guarantee-item-desc {
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--gray2);
+  letter-spacing: 0.04em;
+}
+.materials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 40px;
+}
+.material-tag {
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.material-tag:hover { border-color: rgba(200,169,110,0.4); background: rgba(200,169,110,0.04); }
+.material-tag-name {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.material-tag-desc {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--gray);
+}
+
+/* ── RESPONSIVE ── */
+.reviews-grid { grid-template-columns: 1fr 1fr; }
+  .guarantee-section { margin: 0 40px; }
+}
+.counters-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .guarantee-section { grid-template-columns: 1fr; margin: 0 20px; }
+  .guarantee-block, .materials-block { padding: 40px 28px; }
+  .materials-grid { grid-template-columns: 1fr 1fr; }
+}
+.guarantee-section { margin: 0; }
+}
+
+/* ── FILE UPLOAD ── */
+.file-drop-zone {
+  border: 1px dashed rgba(200,169,110,0.3);
+  background: rgba(200,169,110,0.03);
+  transition: border-color 0.3s, background 0.3s;
+  position: relative;
+  min-height: 100px;
+}
+.file-drop-zone.dragover {
+  border-color: var(--gold);
+  background: rgba(200,169,110,0.07);
+}
+.file-drop-zone input[type=file] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  z-index: 2;
+}
+.file-drop-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 20px;
+  color: var(--gray2);
+}
+.file-drop-text {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--gray2);
+}
+.file-drop-text u { color: var(--gold); text-decoration-color: var(--gold); }
+.file-drop-hint {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.file-list {
+  padding: 0 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(200,169,110,0.06);
+  border: 1px solid rgba(200,169,110,0.12);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--gray2);
+}
+.file-item-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+.file-item-name svg { flex-shrink: 0; color: var(--gold); }
+.file-item-name span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-item-size { color: var(--gray); flex-shrink: 0; margin-left: 8px; }
+.file-item-remove {
+  background: none; border: none; color: var(--gray);
+  cursor: none; padding: 2px 4px;
+  transition: color 0.2s; font-size: 14px; line-height: 1;
+  flex-shrink: 0;
+}
+.file-item-remove:hover { color: #c86e6e; }
+
+/* ── SEND METHOD ── */
+@keyframes iconFloat {
+  0%   { transform: translateY(0px);  }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px);  }
+}
+@keyframes shimmer {
+  0%   { left: -100%; }
+  100% { left: 200%;  }
+}
+
+.send-methods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.send-method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray2);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  transition: border-color 0.28s ease, background 0.28s ease,
+              color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+}
+.send-method input[type=radio] { display: none; }
+
+/* Shimmer overlay */
+.send-method::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(200,169,110,0.12), transparent);
+  transform: skewX(-15deg);
+  pointer-events: none;
+}
+
+/* SVG wrapper для анімації */
+.send-method svg {
+  stroke: var(--gray2);
+  display: block;
+  transition: stroke 0.28s ease, filter 0.28s ease;
+}
+
+/* ── HOVER ── */
+.send-method:hover,
+.send-method.hovered {
+  border-color: rgba(200,169,110,0.55);
+  background: rgba(200,169,110,0.06);
+  color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200,169,110,0.12);
+}
+.send-method:hover::before,
+.send-method.hovered::before {
+  animation: shimmer 0.7s ease forwards;
+}
+.send-method:hover svg,
+.send-method.hovered svg {
+  stroke: var(--gold);
+  filter: drop-shadow(0 0 6px rgba(200,169,110,0.5));
+  animation: iconFloat 0.8s ease forwards;
+}
+
+/* ── ACTIVE (вибраний, залишається) ── */
+.send-method.active {
+  border-color: var(--gold);
+  background: rgba(200,169,110,0.08);
+  color: var(--gold);
+}
+.send-method.active svg {
+  stroke: var(--gold);
+  filter: drop-shadow(0 0 5px rgba(200,169,110,0.4));
+}
+
+/* ── ACTIVE + HOVER ── */
+.send-method.active:hover,
+.send-method.active.hovered {
+  background: rgba(200,169,110,0.14);
+  border-color: var(--gold2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(200,169,110,0.18);
+}
+.send-method.active:hover svg,
+.send-method.active.hovered svg {
+  filter: drop-shadow(0 0 8px rgba(200,169,110,0.65));
+  animation: iconFloat 0.8s ease forwards;
+}
+
+/* Form success state */
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 60px 40px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.form-success.show { display: flex; }
+.form-success-icon { color: var(--gold); }
+.form-success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--white);
+}
+.form-success-sub {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gray2);
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — ALL BREAKPOINTS
+══════════════════════════════════ */
+
+/* ── 1024px: Tablet ── */
+@media (max-width: 1024px) {
+  nav { padding: 22px 40px; }
+  section { padding: 100px 40px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .about { gap: 60px; }
+  .about-visual { height: 380px; }
+  .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .step:nth-child(2) { border-right: none; }
+  .step:nth-child(3) { border-top: 1px solid var(--border); }
+  .contact-section { gap: 60px; }
+  .car-circle { width: 190px; height: 190px; }
+  .car-card { flex: 0 0 190px; }
+}
+
+/* ── 768px: Mobile ── */
+@media (max-width: 768px) {
+  /* Nav */
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .nav-logo-text { font-size: 18px; }
+  .nav-cta { display: none; }
+  #hamburger { display: flex !important; }
+
+  /* Sections */
+  section { padding: 64px 20px; }
+  #about, #process { padding: 64px 20px; }
+  .contact-section { padding: 64px 20px; gap: 44px; grid-template-columns: 1fr; }
+  .section-title { font-size: clamp(28px, 7vw, 44px); }
+  .thin-line { margin: 18px 0; }
+
+  /* Hero */
+  .hero { padding: 96px 20px 64px; }
+  .hero-title { font-size: clamp(44px, 13vw, 72px); letter-spacing: 0.09em; }
+  .hero-sub { font-size: 11px; letter-spacing: 0.1em; max-width: 100%; }
+  .hero-eyebrow { font-size: 8px; letter-spacing: 0.28em; margin-bottom: 22px; }
+  .hero-mark { width: 58px; height: 58px; margin-bottom: 22px; }
+  .hero-btns { flex-direction: column; align-items: center; gap: 10px; margin-top: 36px; }
+  .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; padding: 14px 20px; }
+  .hero-scroll { bottom: 20px; }
+
+  /* Marquee */
+  .marquee-item { font-size: 14px; padding: 0 20px; gap: 16px; }
+  .marquee-track { animation-duration: 18s; }
+
+  /* Carousel */
+  #categories { padding: 56px 0; }
+  #categories > div:first-child { padding: 0 20px; }
+  #carousel { padding: 0 16px 16px; gap: 12px; }
+  .car-circle { width: 148px; height: 148px; }
+  .car-card { flex: 0 0 148px; }
+  .car-label { font-size: 9px; letter-spacing: 0.13em; }
+  #carPrev { left: 4px; width: 36px; height: 36px; }
+  #carNext { right: 4px; width: 36px; height: 36px; }
+  #carDots { margin-top: 18px; }
+
+  /* Services */
+  .services-grid { grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
+  .service-card { padding: 24px 16px; }
+  .service-name { font-size: 18px; }
+  .service-desc { font-size: 10px; }
+
+  /* About */
+  .about { grid-template-columns: 1fr; gap: 0; }
+  .about-visual { display: none; }
+  .about-text p { font-size: 11px; }
+  .about-features { gap: 10px; }
+  .feature-row { font-size: 10px; }
+
+  /* Portfolio */
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
+
+  /* Process */
+  .process-steps { grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
+  .step { padding: 24px 18px; border-right: none; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-size: 34px; }
+  .step-name { font-size: 11px; }
+  .step-desc { font-size: 10px; }
+
+  /* Contact form */
+  .form-row { flex-direction: column; gap: 12px; }
+  .send-methods { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .send-method { padding: 12px 8px; font-size: 8.5px; }
+  .file-drop-inner { padding: 20px 16px; }
+  .file-drop-text { font-size: 10px; }
+
+  /* Footer */
+  footer { flex-direction: column; gap: 14px; text-align: center; padding: 28px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .footer-logo { font-size: 17px; }
+
+  /* Admin panel */
+  #admin-panel { width: 100vw; right: -100vw; }
+  .adm-content { padding: 18px; }
+  .adm-header { padding: 18px 18px 14px; }
+  .adm-photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .adm-tabs { overflow-x: auto; }
+  .adm-tab { padding: 12px 6px; font-size: 8px; white-space: nowrap; }
+
+  /* Calculator panel */
+  #calc-inner-grid { grid-template-columns: 1fr !important; }
+  #calc-popup [style*="position:sticky"] { position: static !important; }
+  #calc-popup > div:first-child { padding: 18px 20px 14px; }
+
+  /* Fixed buttons */
+  #calc-btn { bottom: 80px; right: 16px; width: 44px; height: 44px; }
+  #theme-toggle-btn { bottom: 24px; right: 16px; width: 44px; height: 44px; }
+
+  /* Cursor off on touch */
+  .cursor, .cursor-ring { display: none !important; }
+  body { cursor: auto !important; }
+}
+
+/* ── 430px: iPhone Pro Max / large phones ── */
+@media (max-width: 430px) {
+  /* Nav */
+  nav { padding: 14px 16px; }
+  .nav-logo-text { font-size: 16px; }
+  .nav-cta { display: none; }
+  #hamburger { display: flex !important; }
+
+  /* Sections */
+  section { padding: 56px 16px; }
+  #about, #process { padding: 56px 16px; }
+  .contact-section { padding: 56px 16px; }
+  .section-label { font-size: 8px; letter-spacing: 0.35em; }
+  .section-title { font-size: clamp(26px, 8vw, 38px); }
+  .thin-line { width: 44px; margin: 16px 0; }
+
+  /* Hero */
+  .hero { padding: 88px 16px 56px; text-align: center; }
+  .hero-title { font-size: clamp(42px, 15vw, 58px); letter-spacing: 0.07em; }
+  .hero-eyebrow { font-size: 7.5px; letter-spacing: 0.22em; margin-bottom: 18px; }
+  .hero-sub { font-size: 10px; line-height: 1.85; }
+  .hero-mark { width: 52px; height: 52px; margin-bottom: 20px; }
+  .hero-btns { gap: 10px; margin-top: 28px; }
+  .btn-primary, .btn-outline { font-size: 9px; letter-spacing: 0.2em; padding: 13px 20px; }
+  .hero-scroll { display: none; }
+
+  /* Marquee */
+  .marquee-item { font-size: 12px; padding: 0 14px; gap: 12px; }
+  .marquee-track { animation-duration: 14s; }
+
+  /* Carousel */
+  #categories { padding: 48px 0; }
+  #categories > div:first-child { padding: 0 16px; margin-bottom: 0; }
+  #categories > div:first-child > div:last-child { display: none; }
+  #carousel { padding: 0 12px 14px; gap: 10px; }
+  .car-circle { width: 132px; height: 132px; }
+  .car-card { flex: 0 0 132px; }
+  .car-label { font-size: 8.5px; letter-spacing: 0.1em; }
+  #carPrev, #carNext { display: none; }
+  #carDots { margin-top: 14px; gap: 6px; }
+
+  /* Services */
+  .services-grid { grid-template-columns: 1fr; gap: 1px; }
+  .service-card { padding: 22px 16px; }
+  .service-name { font-size: 19px; }
+  .service-num { font-size: 8px; margin-bottom: 10px; }
+  .service-desc { font-size: 10px; line-height: 1.8; }
+  .service-icon { width: 34px; height: 34px; margin-bottom: 20px; }
+
+  /* About */
+  .about-text .section-title { font-size: clamp(24px, 8vw, 36px); }
+  .about-features { margin-top: 24px; }
+  .feature-row { font-size: 10px; gap: 12px; }
+
+  /* Portfolio */
+  .portfolio-grid { grid-template-columns: 1fr; margin-top: 32px; }
+  .portfolio-item { aspect-ratio: 16/9; }
+
+  /* Process */
+  .process-steps { grid-template-columns: 1fr; margin-top: 32px; }
+  .step { padding: 20px 16px; }
+  .step-num { font-size: 30px; margin-bottom: 12px; }
+
+  /* Contact */
+  .contact-item-value { font-size: 16px; }
+  .contact-block { gap: 20px; }
+  .send-methods { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .send-method { padding: 11px 6px; font-size: 8px; gap: 5px; }
+  .form-input, .form-textarea { font-size: 11px; padding: 12px 14px; }
+  .form-textarea { height: 100px; }
+  .form-submit { font-size: 9px; padding: 14px 28px; }
+  .file-drop-zone { min-height: 80px; }
+  .file-drop-inner { padding: 16px 12px; gap: 6px; }
+  .file-drop-text { font-size: 9.5px; }
+  .file-drop-hint { font-size: 7.5px; }
+
+  /* Footer */
+  footer { padding: 22px 16px; gap: 12px; }
+  .footer-logo { font-size: 15px; letter-spacing: 0.18em; }
+  .footer-copy { font-size: 8px; }
+  .footer-links { gap: 12px; }
+  .footer-links a { font-size: 8px; }
+
+  /* Admin panel */
+  #admin-panel { width: 100vw; }
+  .adm-title { font-size: 18px; }
+
+  /* Calculator panel */
+  #calc-popup { width: 100vw; }
+  #calc-popup > div:first-child { padding: 16px; }
+
+  /* Fixed buttons */
+  #calc-btn { bottom: 70px; right: 14px; width: 42px; height: 42px; }
+  #theme-toggle-btn { bottom: 18px; right: 14px; width: 42px; height: 42px; }
+  button[title="Адмін панель"] { bottom: 122px; right: 14px; width: 42px; height: 42px; }
+}
+
+/* ── 375px: iPhone SE / small phones ── */
+@media (max-width: 375px) {
+  .hero-title { font-size: clamp(38px, 14vw, 52px); }
+  .car-circle { width: 118px; height: 118px; }
+  .car-card { flex: 0 0 118px; }
+  section { padding: 48px 14px; }
+  #about, #process, .contact-section { padding: 48px 14px; }
+  nav { padding: 12px 14px; }
+}
+
+/* ── 1440px+: Large screens ── */
+@media (min-width: 1440px) {
+  nav { padding: 32px 80px; }
+  section { padding: 140px 80px; }
+  #about, #process { padding: 140px 80px; }
+  .contact-section { padding: 140px 80px; }
+  footer { padding: 48px 80px; }
+  #categories > div:first-child { padding: 0 80px; }
+  #carousel { padding: 0 80px 24px; }
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-title { font-size: 118px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 72 72" fill="none">
+        <circle cx="36" cy="36" r="28" stroke="#c8a96e" stroke-width="0.8"/>
+        <line x1="36" y1="36" x2="22" y2="13" stroke="#c8a96e" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="36" y2="8"  stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="36" y1="36" x2="50" y2="13" stroke="#c8a96e" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="24" y1="54" x2="48" y2="54" stroke="#c8a96e" stroke-width="0.9" stroke-linecap="round"/>
+        <line x1="36" y1="54" x2="36" y2="60" stroke="#c8a96e" stroke-width="0.9" stroke-linecap="round"/>
+        <circle cx="36" cy="36" r="3" fill="#c8a96e"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">LUMIS</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Послуги</a></li>
+    <li><a href="#about">Про нас</a></li>
+    <li><a href="#portfolio">Роботи</a></li>
+    <li><a href="#contact">Контакти</a></li>
+  </ul>
+
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a id="ig-nav-link" href="https://instagram.com/lumis.ua" target="_blank" class="ig-icon-btn" title="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="#contact" class="nav-cta">Замовити</a>
+    <button id="hamburger" onclick="toggleMenu()" aria-label="Меню" style="display:none;background:none;border:none;color:var(--gold);cursor:pointer;padding:4px;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:32px;height:32px;">
+      <span class="ham-line" style="display:block;width:22px;height:1px;background:currentColor;transition:all 0.3s;"></span>
+      <span class="ham-line" style="display:block;width:22px;height:1px;background:currentColor;transition:all 0.3s;"></span>
+      <span class="ham-line" style="display:block;width:14px;height:1px;background:currentColor;transition:all 0.3s;align-self:flex-end;"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:998;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;transition:opacity 0.3s;">
+  <a href="#services" onclick="closeMenu()" style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;letter-spacing:0.1em;color:var(--white);text-decoration:none;transition:color 0.2s;" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--white)'">Послуги</a>
+  <a href="#about" onclick="closeMenu()" style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;letter-spacing:0.1em;color:var(--white);text-decoration:none;transition:color 0.2s;" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--white)'">Про нас</a>
+  <a href="#portfolio" onclick="closeMenu()" style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;letter-spacing:0.1em;color:var(--white);text-decoration:none;transition:color 0.2s;" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--white)'">Роботи</a>
+  <a href="#contact" onclick="closeMenu()" style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;letter-spacing:0.1em;color:var(--white);text-decoration:none;transition:color 0.2s;" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--white)'">Контакти</a>
+  <a href="#contact" onclick="closeMenu()" style="display:inline-block;margin-top:12px;border:1px solid var(--gold);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;padding:14px 36px;text-decoration:none;">Замовити</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-mark">
+    <svg viewBox="0 0 72 72" fill="none" style="filter:drop-shadow(0 0 16px rgba(200,169,110,0.3))">
+      <circle cx="36" cy="36" r="30" stroke="#c8a96e" stroke-width="0.7"
+              stroke-dasharray="188" stroke-dashoffset="188"
+              style="animation: strokeDraw 1.8s ease 0.1s forwards"/>
+      <line x1="36" y1="36" x2="20" y2="10" stroke="#c8a96e" stroke-width="0.9" stroke-linecap="round"
+              stroke-dasharray="30" stroke-dashoffset="30"
+              style="animation: strokeDraw 0.6s ease 1s forwards"/>
+      <line x1="36" y1="36" x2="36" y2="6"  stroke="#c8a96e" stroke-width="1.3" stroke-linecap="round"
+              stroke-dasharray="30" stroke-dashoffset="30"
+              style="animation: strokeDraw 0.6s ease 1.1s forwards"/>
+      <line x1="36" y1="36" x2="52" y2="10" stroke="#c8a96e" stroke-width="0.9" stroke-linecap="round"
+              stroke-dasharray="30" stroke-dashoffset="30"
+              style="animation: strokeDraw 0.6s ease 1.2s forwards"/>
+      <line x1="22" y1="56" x2="50" y2="56" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"
+              stroke-dasharray="28" stroke-dashoffset="28"
+              style="animation: strokeDraw 0.5s ease 1.4s forwards"/>
+      <line x1="36" y1="56" x2="36" y2="64" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"
+              stroke-dasharray="8" stroke-dashoffset="8"
+              style="animation: strokeDraw 0.3s ease 1.6s forwards"/>
+      <circle cx="36" cy="36" r="3.5" fill="#c8a96e"
+              style="opacity:0; animation: fadeUp 0.4s ease 1.7s forwards"/>
+      <circle cx="36" cy="36" r="8" fill="rgba(200,169,110,0.1)"
+              style="opacity:0; animation: fadeUp 0.4s ease 1.7s forwards"/>
+    </svg>
+  </div>
+
+  <div class="hero-eyebrow">Рекламна продукція · Київ</div>
+  <h1 class="hero-title">LU<em>M</em>IS</h1>
+  <p class="hero-sub">Виготовляємо фотозони, лайтбокси, наліпки,<br>об'ємні літери, неонові вивіски та індивідуальні замовлення</p>
+
+  <div class="hero-btns">
+    <a href="#portfolio" class="btn-primary">Наші роботи</a>
+    <a href="#contact" class="btn-outline">Зв'язатись</a>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Гортати</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- CAROUSEL -->
+<section id="categories" style="padding: 100px 0; overflow:hidden; background: var(--bg);">
+  <div style="padding: 0 60px;" class="reveal">
+    <div class="section-label">Популярні категорії</div>
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom: 52px;">
+      <h2 class="section-title">Оглянути <em>колекції</em></h2>
+      <a href="#contact" style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--border); padding-bottom:3px; white-space:nowrap; transition:border-color 0.3s;" onmouseenter="this.style.borderColor='var(--gold)'" onmouseleave="this.style.borderColor='var(--border)'">Всі колекції →</a>
+    </div>
+  </div>
+
+  <!-- Track wrapper -->
+  <div style="position:relative;">
+    <!-- Left arrow -->
+    <button id="carPrev" onclick="carScroll(-1)" style="position:absolute; left:24px; top:50%; transform:translateY(-60%); z-index:10; cursor:pointer; background:rgba(12,10,8,0.85); border:1px solid var(--border); color:var(--gold); width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.3s; backdrop-filter:blur(8px);">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="10,3 5,8 10,13" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <!-- Right arrow -->
+    <button id="carNext" onclick="carScroll(1)" style="position:absolute; right:24px; top:50%; transform:translateY(-60%); z-index:10; cursor:pointer; background:rgba(12,10,8,0.85); border:1px solid var(--border); color:var(--gold); width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.3s; backdrop-filter:blur(8px);">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="6,3 11,8 6,13" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div id="carousel" style="display:flex; gap:28px; padding:0 60px 24px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none;">
+
+      <!-- Card 1 — Фотозони -->
+      <div class="car-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div class="car-circle" style="background: radial-gradient(135deg at 40% 35%, #2a2118, #141210);">
+          <svg viewBox="0 0 110 110" fill="none" width="80" height="80">
+            <!-- camera body -->
+            <rect x="18" y="32" width="74" height="52" rx="4" fill="#1a1510" stroke="#c8a96e" stroke-width="1.4"/>
+            <!-- lens -->
+            <circle cx="55" cy="58" r="18" fill="#111" stroke="#c8a96e" stroke-width="1.4"/>
+            <circle cx="55" cy="58" r="11" fill="#0a0a0a" stroke="#c8a96e" stroke-width="0.8" opacity="0.7"/>
+            <circle cx="55" cy="58" r="5" fill="#c8a96e" opacity="0.25"/>
+            <!-- flash -->
+            <rect x="38" y="24" width="14" height="10" rx="2" fill="#1a1510" stroke="#c8a96e" stroke-width="1"/>
+            <!-- light glow -->
+            <circle cx="55" cy="58" r="22" fill="none" stroke="rgba(200,169,110,0.12)" stroke-width="6"/>
+          </svg>
+        </div>
+        <div class="car-label">Фотозони</div>
+      </div>
+
+      <!-- Card 2 — Лайтбокси -->
+      <div class="car-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div class="car-circle" style="background: radial-gradient(135deg at 60% 40%, #181e2a, #0e1018);">
+          <svg viewBox="0 0 110 110" fill="none" width="80" height="80">
+            <!-- lightbox frame -->
+            <rect x="20" y="28" width="70" height="54" rx="2" fill="#111" stroke="#c8a96e" stroke-width="1.4"/>
+            <!-- inner lit panel -->
+            <rect x="27" y="35" width="56" height="40" rx="1" fill="rgba(200,169,110,0.06)" stroke="rgba(200,169,110,0.3)" stroke-width="0.8"/>
+            <!-- LUMIS text suggestion -->
+            <rect x="34" y="50" width="42" height="10" rx="1" fill="rgba(200,169,110,0.15)"/>
+            <!-- glow lines top/bottom -->
+            <line x1="20" y1="34" x2="90" y2="34" stroke="rgba(200,169,110,0.2)" stroke-width="1"/>
+            <line x1="20" y1="76" x2="90" y2="76" stroke="rgba(200,169,110,0.2)" stroke-width="1"/>
+            <!-- mount bracket -->
+            <line x1="55" y1="82" x2="55" y2="92" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"/>
+            <line x1="44" y1="92" x2="66" y2="92" stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="car-label">Лайтбокси</div>
+      </div>
+
+      <!-- Card 3 — Неон -->
+      <div class="car-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div class="car-circle" style="background: radial-gradient(135deg at 35% 50%, #1a1228, #0c0814);">
+          <svg viewBox="0 0 110 110" fill="none" width="90" height="90" style="filter:drop-shadow(0 0 8px rgba(200,169,110,0.45))">
+            <!-- neon letter L -->
+            <path d="M28 35 L28 75 L52 75" stroke="#e2c38a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- neon letter U -->
+            <path d="M58 35 L58 65 Q58 75 68 75 Q78 75 78 65 L78 35" stroke="#e2c38a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- outer glow repeat -->
+            <path d="M28 35 L28 75 L52 75" stroke="rgba(200,169,110,0.2)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M58 35 L58 65 Q58 75 68 75 Q78 75 78 65 L78 35" stroke="rgba(200,169,110,0.2)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="car-label">Неонові вивіски</div>
+      </div>
+
+      <!-- Card 4 — Об'ємні літери -->
+      <div class="car-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div class="car-circle" style="background: radial-gradient(135deg at 45% 30%, #1e1a10, #0f0d08);">
+          <svg viewBox="0 0 110 110" fill="none" width="82" height="82">
+            <!-- 3D letter A perspective -->
+            <!-- front face -->
+            <path d="M36 78 L55 28 L74 78 Z" fill="rgba(200,169,110,0.08)" stroke="#c8a96e" stroke-width="1.4" stroke-linejoin="round"/>
+            <!-- crossbar -->
+            <line x1="44" y1="62" x2="66" y2="62" stroke="#c8a96e" stroke-width="1.4"/>
+            <!-- side depth shadow -->
+            <path d="M74 78 L80 82 L61 82 L55 78" fill="rgba(200,169,110,0.06)" stroke="rgba(200,169,110,0.3)" stroke-width="0.8"/>
+            <path d="M74 78 L80 82 L62 32 L55 28" fill="rgba(200,169,110,0.04)" stroke="rgba(200,169,110,0.25)" stroke-width="0.8"/>
+            <!-- top glow -->
+            <circle cx="55" cy="28" r="4" fill="rgba(200,169,110,0.3)"/>
+          </svg>
+        </div>
+        <div class="car-label">Об'ємні літери</div>
+      </div>
+
+      <!-- Card 5 — Наліпки / вініл -->
+      <div class="car-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div class="car-circle" style="background: radial-gradient(135deg at 55% 45%, #12181e, #090c10);">
+          <svg viewBox="0 0 110 110" fill="none" width="80" height="80">
+            <!-- roll of vinyl -->
+            <ellipse cx="55" cy="50" rx="26" ry="8" fill="rgba(200,169,110,0.07)" stroke="#c8a96e" stroke-width="1.2"/>
+            <rect x="29" y="50" width="52" height="28" rx="0" fill="rgba(200,169,110,0.05)" stroke="none"/>
+            <ellipse cx="55" cy="78" rx="26" ry="8" fill="rgba(200,169,110,0.07)" stroke="#c8a96e" stroke-width="1.2"/>
+            <line x1="29" y1="50" x2="29" y2="78" stroke="#c8a96e" stroke-width="1.2"/>
+            <line x1="81" y1="50" x2="81" y2="78" stroke="#c8a96e" stroke-width="1.2"/>
+            <!-- core -->
+            <ellipse cx="55" cy="50" rx="10" ry="3" fill="#0a0908" stroke="rgba(200,169,110,0.4)" stroke-width="0.8"/>
+            <!-- star/sparkle on film -->
+            <path d="M50 62 L52 58 L54 62 L58 60 L55 63 L58 67 L54 65 L52 69 L50 65 L46 67 L49 63 L46 60 Z" fill="rgba(200,169,110,0.2)" stroke="rgba(200,169,110,0.5)" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="car-label">Наліпки та вініл</div>
+      </div>
+
+      <!-- Card 6 — Індивідуальне -->
+      <div class="car-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div class="car-circle" style="background: radial-gradient(135deg at 40% 60%, #1a1218, #0c080e);">
+          <svg viewBox="0 0 110 110" fill="none" width="80" height="80">
+            <!-- gear / settings -->
+            <circle cx="55" cy="55" r="14" fill="rgba(200,169,110,0.06)" stroke="#c8a96e" stroke-width="1.4"/>
+            <circle cx="55" cy="55" r="6" fill="rgba(200,169,110,0.1)" stroke="#c8a96e" stroke-width="1"/>
+            <!-- gear teeth -->
+            <rect x="52" y="30" width="6" height="10" rx="2" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="0.8" transform="rotate(0 55 55)"/>
+            <rect x="52" y="30" width="6" height="10" rx="2" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="0.8" transform="rotate(45 55 55)"/>
+            <rect x="52" y="30" width="6" height="10" rx="2" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="0.8" transform="rotate(90 55 55)"/>
+            <rect x="52" y="30" width="6" height="10" rx="2" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="0.8" transform="rotate(135 55 55)"/>
+            <rect x="52" y="30" width="6" height="10" rx="2" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="0.8" transform="rotate(180 55 55)"/>
+            <rect x="52" y="30" width="6" height="10" rx="2" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="0.8" transform="rotate(225 55 55)"/>
+            <rect x="52" y="30" width="6" height="10" rx="2" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="0.8" transform="rotate(270 55 55)"/>
+            <rect x="52" y="30" width="6" height="10" rx="2" fill="rgba(200,169,110,0.15)" stroke="#c8a96e" stroke-width="0.8" transform="rotate(315 55 55)"/>
+          </svg>
+        </div>
+        <div class="car-label">Індивідуальне</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div id="carDots" style="display:flex; justify-content:center; gap:8px; margin-top:32px; padding:0 60px;">
+    <div class="car-dot active"></div>
+    <div class="car-dot"></div>
+    <div class="car-dot"></div>
+  </div>
+</section>
+
+
+
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-inner">
+      <div class="marquee-item"><em>Якість</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Фотозони<div class="marquee-dot"></div></div>
+      <div class="marquee-item"><em>Світло</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Лайтбокси<div class="marquee-dot"></div></div>
+      <div class="marquee-item"><em>Форма</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Неонові вивіски<div class="marquee-dot"></div></div>
+      <div class="marquee-item"><em>Київ</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Об'ємні літери<div class="marquee-dot"></div></div>
+      <div class="marquee-item"><em>Преміум</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Індивідуально<div class="marquee-dot"></div></div>
+    </div>
+    <div class="marquee-inner" aria-hidden="true">
+      <div class="marquee-item"><em>Якість</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Фотозони<div class="marquee-dot"></div></div>
+      <div class="marquee-item"><em>Світло</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Лайтбокси<div class="marquee-dot"></div></div>
+      <div class="marquee-item"><em>Форма</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Неонові вивіски<div class="marquee-dot"></div></div>
+      <div class="marquee-item"><em>Київ</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Об'ємні літери<div class="marquee-dot"></div></div>
+      <div class="marquee-item"><em>Преміум</em><div class="marquee-dot"></div></div>
+      <div class="marquee-item">Індивідуально<div class="marquee-dot"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="reveal">
+    <div class="section-label">Що ми робимо</div>
+    <h2 class="section-title">Наші <em>послуги</em></h2>
+    <div class="thin-line"></div>
+  </div>
+
+  <div class="services-grid reveal">
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 42 42" fill="none" width="42" height="42">
+          <rect x="4" y="8" width="34" height="26" rx="1" stroke="#c8a96e" stroke-width="1"/>
+          <rect x="8" y="12" width="26" height="18" stroke="#c8a96e" stroke-width="0.7" opacity="0.5"/>
+          <circle cx="21" cy="21" r="4" stroke="#c8a96e" stroke-width="1"/>
+          <line x1="14" y1="36" x2="28" y2="36" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"/>
+          <line x1="21" y1="34" x2="21" y2="38" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="service-num">01</div>
+      <div class="service-name">Фотозони</div>
+      <div class="service-desc">Індивідуальні фотозони для заходів, магазинів та брендів. Розробляємо концепцію та виготовляємо під ключ.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 42 42" fill="none" width="42" height="42">
+          <rect x="5" y="10" width="32" height="20" rx="1" stroke="#c8a96e" stroke-width="1"/>
+          <line x1="5" y1="15" x2="37" y2="15" stroke="#c8a96e" stroke-width="0.6" opacity="0.4"/>
+          <circle cx="21" cy="22" r="5" stroke="#c8a96e" stroke-width="0.8"/>
+          <circle cx="21" cy="22" r="2.5" fill="#c8a96e" opacity="0.4"/>
+          <line x1="15" y1="32" x2="27" y2="32" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="service-num">02</div>
+      <div class="service-name">Лайтбокси</div>
+      <div class="service-desc">Світлові короби будь-якого формату. Рівномірне підсвічування, тривалий термін служби, яскравий образ бренду.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 42 42" fill="none" width="42" height="42">
+          <rect x="6" y="6" width="30" height="30" rx="1" stroke="#c8a96e" stroke-width="1"/>
+          <path d="M14 21 L19 26 L28 16" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="service-num">03</div>
+      <div class="service-name">Наліпки</div>
+      <div class="service-desc">Вінілові наліпки, брендування скла та поверхонь. Будь-яка форма та розмір, стійкі до зовнішніх умов.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 42 42" fill="none" width="42" height="42">
+          <path d="M8 30 L8 14 L14 8 L20 14 L20 30" stroke="#c8a96e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 20 L26 14 L32 20 L32 30" stroke="#c8a96e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="6" y1="30" x2="36" y2="30" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="service-num">04</div>
+      <div class="service-name">Об'ємні літери</div>
+      <div class="service-desc">Акрилові, пластикові та металеві об'ємні літери з підсвіткою або без. Корпоративні вивіски та декор.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 42 42" fill="none" width="42" height="42">
+          <path d="M10 28 Q10 16 21 16 Q32 16 32 28" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round" fill="none"
+                style="filter:drop-shadow(0 0 3px #c8a96e)"/>
+          <path d="M14 28 Q14 20 21 20 Q28 20 28 28" stroke="#c8a96e" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/>
+          <circle cx="10" cy="28" r="2" fill="#c8a96e"/>
+          <circle cx="32" cy="28" r="2" fill="#c8a96e"/>
+        </svg>
+      </div>
+      <div class="service-num">05</div>
+      <div class="service-name">Неонові вивіски</div>
+      <div class="service-desc">LED-неон будь-якої складності. Від логотипів до декоративних написів — виготовляємо за індивідуальним ескізом.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 42 42" fill="none" width="42" height="42">
+          <circle cx="21" cy="21" r="14" stroke="#c8a96e" stroke-width="1" stroke-dasharray="4 3"/>
+          <circle cx="21" cy="21" r="6" stroke="#c8a96e" stroke-width="1"/>
+          <line x1="21" y1="7" x2="21" y2="4" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"/>
+          <line x1="21" y1="38" x2="21" y2="35" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"/>
+          <line x1="7" y1="21" x2="4" y2="21" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"/>
+          <line x1="38" y1="21" x2="35" y2="21" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="service-num">06</div>
+      <div class="service-name">Індивідуальні замовлення</div>
+      <div class="service-desc">Нестандартні рішення під будь-яке завдання. Консультуємо, проектуємо та реалізуємо ідеї будь-якої складності.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="padding: 120px 60px;">
+  <div class="about reveal">
+    <div class="about-visual">
+      <div class="about-box about-box-1">
+        <div class="about-icon-wrap">
+          <svg viewBox="0 0 72 72" fill="none">
+            <circle cx="36" cy="36" r="30" stroke="#c8a96e" stroke-width="1"/>
+            <line x1="36" y1="36" x2="20" y2="10" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"/>
+            <line x1="36" y1="36" x2="36" y2="6"  stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="36" y1="36" x2="52" y2="10" stroke="#c8a96e" stroke-width="1" stroke-linecap="round"/>
+            <line x1="22" y1="56" x2="50" y2="56" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="36" y1="56" x2="36" y2="64" stroke="#c8a96e" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="36" cy="36" r="4" fill="#c8a96e"/>
+          </svg>
+        </div>
+      </div>
+      <div class="about-box about-box-2">
+        <div class="about-stat-num">5+</div>
+        <div class="about-stat-label">Років досвіду</div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="section-label">Про студію</div>
+      <h2 class="section-title">Світло — це <em>наша</em> мова</h2>
+      <div class="thin-line"></div>
+      <p>LUMIS — студія рекламної продукції у Києві. Ми спеціалізуємось на виготовленні вивісок, фотозон та рекламних конструкцій, які привертають увагу та підсилюють образ бренду.</p>
+      <p>Від ескізу до готового виробу — контролюємо кожен етап. Використовуємо якісні матеріали та сучасне обладнання для точного й довговічного результату.</p>
+
+      <div class="about-features">
+        <div class="feature-row"><div class="feature-dot"></div>Власне виробництво в Києві</div>
+        <div class="feature-row"><div class="feature-dot"></div>Безкоштовний дизайн-проект</div>
+        <div class="feature-row"><div class="feature-dot"></div>Терміни від 3 робочих днів</div>
+        <div class="feature-row"><div class="feature-dot"></div>Монтаж та гарантійне обслуговування</div>
+        <div class="feature-row"><div class="feature-dot"></div>Індивідуальний підхід до кожного замовлення</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="reveal">
+    <div class="section-label">Наші роботи</div>
+    <h2 class="section-title">Останні <em>проєкти</em></h2>
+    <div class="thin-line"></div>
+  </div>
+
+  <div class="portfolio-grid reveal">
+    <div class="portfolio-item" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80');background-size:cover;background-position:center;">
+      <div style="position:absolute;inset:0;background:rgba(12,10,8,0.35);transition:background 0.4s;"></div>
+      <div class="pi-label">
+        <div class="pi-label-name">Фотозона Bloom</div>
+        <div class="pi-label-type">Фотозона</div>
+      </div>
+    </div>
+    <div class="portfolio-item" style="background-image:url('https://images.unsplash.com/photo-1542621334-a254cf47733d?w=800&q=80');background-size:cover;background-position:center;">
+      <div style="position:absolute;inset:0;background:rgba(12,10,8,0.35);transition:background 0.4s;"></div>
+      <div class="pi-label">
+        <div class="pi-label-name">Neon Love</div>
+        <div class="pi-label-type">Неонова вивіска</div>
+      </div>
+    </div>
+    <div class="portfolio-item" style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80');background-size:cover;background-position:center;">
+      <div style="position:absolute;inset:0;background:rgba(12,10,8,0.35);transition:background 0.4s;"></div>
+      <div class="pi-label">
+        <div class="pi-label-name">Лайтбокс Café M</div>
+        <div class="pi-label-type">Лайтбокс</div>
+      </div>
+    </div>
+    <div class="portfolio-item" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80');background-size:cover;background-position:center;">
+      <div style="position:absolute;inset:0;background:rgba(12,10,8,0.35);transition:background 0.4s;"></div>
+      <div class="pi-label">
+        <div class="pi-label-name">AURA Letters</div>
+        <div class="pi-label-type">Об'ємні літери</div>
+      </div>
+    </div>
+    <div class="portfolio-item" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80');background-size:cover;background-position:center;">
+      <div style="position:absolute;inset:0;background:rgba(12,10,8,0.35);transition:background 0.4s;"></div>
+      <div class="pi-label">
+        <div class="pi-label-name">Брендинг вітрин</div>
+        <div class="pi-label-type">Наліпки / вінілова плівка</div>
+      </div>
+    </div>
+    <div class="portfolio-item" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80');background-size:cover;background-position:center;">
+      <div style="position:absolute;inset:0;background:rgba(12,10,8,0.35);transition:background 0.4s;"></div>
+      <div class="pi-label">
+        <div class="pi-label-name">Індивідуальний проєкт</div>
+        <div class="pi-label-type">Нестандартне замовлення</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCESS -->
+<section id="process" style="padding:120px 60px;">
+  <div class="reveal">
+    <div class="section-label">Як ми працюємо</div>
+    <h2 class="section-title">Чотири <em>кроки</em></h2>
+    <div class="thin-line"></div>
+  </div>
+
+  <div class="process-steps reveal">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-name">Заявка</div>
+      <div class="step-desc">Залишаєте запит або телефонуєте. Обговорюємо завдання, терміни та бюджет.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-name">Дизайн</div>
+      <div class="step-desc">Безкоштовно розробляємо макет та узгоджуємо з вами до повного схвалення.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-name">Виготовлення</div>
+      <div class="step-desc">Виробляємо на власному обладнанні. Контролюємо якість на кожному етапі.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-name">Доставка</div>
+      <div class="step-desc">Доставляємо та за потреби встановлюємо. Надаємо гарантію на всі вироби.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-info reveal">
+    <div class="section-label">Зв'язатись</div>
+    <h2 class="section-title">Розкажіть про <em>ваш</em> проєкт</h2>
+    <div class="thin-line"></div>
+
+    <div class="contact-block">
+      <div class="contact-item">
+        <div class="contact-item-label">Телефон</div>
+        <div class="contact-item-value"><a href="tel:+380441234567">+38 (044) 123-45-67</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#573f323b3b38173b223a3e24792236"><span class="__cf_email__" data-cfemail="a1c9c4cdcdcee1cdd4ccc8d28fd4c0">[email&#160;protected]</span></a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Адреса</div>
+        <div class="contact-item-value">Київ, вул. Хрещатик, 1</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Графік роботи</div>
+        <div class="contact-item-value">Пн–Пт, 9:00–18:00</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Ім'я</label>
+        <input class="form-input" type="text" placeholder="Ваше ім'я">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Телефон</label>
+        <input class="form-input" type="tel" placeholder="+38 (0__)">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Тип замовлення</label>
+      <input class="form-input" type="text" placeholder="Лайтбокс, неон, фотозона…">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Повідомлення</label>
+      <textarea class="form-textarea" placeholder="Опишіть ваш проєкт..."></textarea>
+    </div>
+
+    <!-- FILE UPLOAD -->
+    <div class="form-group">
+      <label class="form-label">Прикріпити файл <span style="color:var(--gray);font-size:8px;letter-spacing:0.1em;">(необов'язково)</span></label>
+      <div class="file-drop-zone" id="fileDropZone">
+        <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg,.zip" onchange="handleFiles(this.files)">
+        <div class="file-drop-inner" id="fileDropInner">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <span class="file-drop-text">Перетягніть файли або <u>оберіть</u></span>
+          <span class="file-drop-hint">JPG, PNG, PDF, AI, EPS, SVG, ZIP · до 10MB</span>
+        </div>
+        <div class="file-list" id="fileList"></div>
+      </div>
+    </div>
+
+    <!-- SEND METHOD -->
+    <div class="form-group">
+      <label class="form-label">Де надіслати запит</label>
+      <div class="send-methods">
+        <label class="send-method" id="method-email">
+          <input type="radio" name="send_method" value="email" checked onchange="selectMethod('email')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <span>Email</span>
+        </label>
+        <label class="send-method" id="method-telegram">
+          <input type="radio" name="send_method" value="telegram" onchange="selectMethod('telegram')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13"/>
+            <path d="M22 2L15 22l-4-9-9-4 20-7z"/>
+          </svg>
+          <span>Telegram</span>
+        </label>
+        <label class="send-method" id="method-viber">
+          <input type="radio" name="send_method" value="viber" onchange="selectMethod('viber')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M12 2C6.48 2 2 6.02 2 11c0 2.64 1.14 5.02 2.97 6.72L4 22l4.37-1.14A10.1 10.1 0 0012 21c5.52 0 10-4.02 10-9s-4.48-10-10-10z"/>
+            <path d="M14.5 14.5c-.28.28-1.06.56-1.5.5-1.44-.18-3.28-2-3.5-3.5-.06-.44.22-1.22.5-1.5l.5-.5c.28-.28.56-.1.78.12l.78.78c.22.22.34.56.06.84l-.22.22c.28.84 1.06 1.62 1.9 1.9l.22-.22c.28-.28.62-.16.84.06l.78.78c.22.22.4.5.12.78l-.46.44z"/>
+          </svg>
+          <span>Viber</span>
+        </label>
+        <label class="send-method" id="method-instagram">
+          <input type="radio" name="send_method" value="instagram" onchange="selectMethod('instagram')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>Instagram</span>
+        </label>
+      </div>
+    </div>
+
+    <button class="form-submit" onclick="submitForm(event)">Надіслати запит</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LUMIS</div>
+  <div class="footer-copy">© 2024 LUMIS. Всі права захищені.</div>
+  <div style="display:flex;align-items:center;gap:24px;">
+    <div class="footer-links">
+      <a href="#services">Послуги</a>
+      <a href="#portfolio">Роботи</a>
+      <a href="#contact">Контакти</a>
+    </div>
+    <a id="ig-footer-link" href="https://instagram.com/lumis.ua" target="_blank" class="ig-icon-btn" title="Наш Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<style>
+@keyframes strokeDraw { to { stroke-dashoffset: 0; } }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Carousel
+const car = document.getElementById('carousel');
+const dots = document.querySelectorAll('.car-dot');
+// Calculate cardW dynamically based on actual card size
+function getCardW() {
+  const firstCard = car.querySelector('.car-card:not(.car-clone)');
+  if (!firstCard) return 248;
+  const gap = 28;
+  return firstCard.offsetWidth + gap;
+}
+let cardW = 248; // default, updated after layout
+setTimeout(() => { cardW = getCardW(); rebuildInfiniteClones(); }, 100);
+
+// ── Infinite loop carousel ──
+function getCards() { return Array.from(car.querySelectorAll('.car-card:not(.car-clone)')); }
+
+function rebuildInfiniteClones() {
+  cardW = getCardW();
+  // Remove old clones
+  car.querySelectorAll('.car-clone').forEach(el => el.remove());
+  const cards = getCards();
+  if (cards.length === 0) return;
+  // Clone full set before and after
+  const before = cards.map(orig => { const cl = orig.cloneNode(true); cl.classList.add('car-clone'); return cl; });
+  const after  = cards.map(orig => { const cl = orig.cloneNode(true); cl.classList.add('car-clone'); return cl; });
+  before.reverse().forEach(cl => car.insertBefore(cl, car.firstChild));
+  after.forEach(cl => car.appendChild(cl));
+  // Jump to real section silently
+  const jumpTo = cards.length * cardW;
+  car.style.scrollBehavior = 'auto';
+  car.scrollLeft = jumpTo;
+  requestAnimationFrame(() => { car.style.scrollBehavior = 'smooth'; });
+}
+
+function carScroll(dir) {
+  cardW = getCardW();
+  car.scrollBy({ left: dir * cardW * 2, behavior: 'smooth' });
+}
+
+// Infinite: teleport when reaching clone zone
+let scrolling = false;
+car.addEventListener('scroll', () => {
+  if (scrolling) return;
+  const cards = getCards();
+  if (!cards.length) return;
+  cardW = getCardW();
+  const cloneW = cards.length * cardW;
+  if (car.scrollLeft >= cloneW * 2 - cardW) {
+    scrolling = true;
+    car.style.scrollBehavior = 'auto';
+    car.scrollLeft -= cloneW;
+    requestAnimationFrame(() => { car.style.scrollBehavior = 'smooth'; scrolling = false; });
+  } else if (car.scrollLeft <= cardW * 0.5) {
+    scrolling = true;
+    car.style.scrollBehavior = 'auto';
+    car.scrollLeft += cloneW;
+    requestAnimationFrame(() => { car.style.scrollBehavior = 'smooth'; scrolling = false; });
+  }
+  // Update dots
+  const realOffset = car.scrollLeft - cloneW;
+  const activeIdx = Math.round(Math.max(0, realOffset) / cardW) % cards.length;
+  const dotEls = document.querySelectorAll('.car-dot');
+  dotEls.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+});
+
+// Init clones on load
+rebuildInfiniteClones();
+
+// Enable custom cursor only on pointer:fine (desktop/mouse)
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.body.classList.add('use-custom-cursor');
+}
+
+// Drag to scroll (mouse)
+let isDown = false, startX, scrollLeft;
+car.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - car.offsetLeft; scrollLeft = car.scrollLeft; });
+car.addEventListener('mouseleave', () => isDown = false);
+car.addEventListener('mouseup', () => isDown = false);
+car.addEventListener('mousemove', e => {
+  if (!isDown) return;
+  e.preventDefault();
+  car.scrollLeft = scrollLeft - (e.pageX - car.offsetLeft - startX);
+});
+
+// Touch swipe support
+let touchStartX = 0;
+car.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+car.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 30) car.scrollBy({ left: diff * 1.5, behavior: 'smooth' });
+}, { passive: true });
+
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top  = my + 'px';
+});
+
+function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+
+document.querySelectorAll('a, button, label.send-method').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    ring.style.width  = '50px';
+    ring.style.height = '50px';
+    ring.style.borderColor = 'rgba(200,169,110,0.7)';
+  });
+  el.addEventListener('mouseleave', () => {
+    ring.style.width  = '32px';
+    ring.style.height = '32px';
+    ring.style.borderColor = 'rgba(200,169,110,0.4)';
+  });
+});
+
+// Sticky nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(r => obs.observe(r));
+
+// ══════════════════════════════
+//  FILE UPLOAD & FORM
+// ══════════════════════════════
+let uploadedFiles = [];
+
+function handleFiles(files) {
+  const maxSize = 10 * 1024 * 1024;
+  Array.from(files).forEach(file => {
+    if (file.size > maxSize) {
+      showToast('Файл ' + file.name + ' перевищує 10MB'); return;
+    }
+    if (uploadedFiles.find(f => f.name === file.name)) return;
+    uploadedFiles.push(file);
+  });
+  renderFileList();
+}
+
+function renderFileList() {
+  const list = document.getElementById('fileList');
+  const inner = document.getElementById('fileDropInner');
+  if (!list) return;
+  list.innerHTML = uploadedFiles.map((f, i) => `
+    <div class="file-item">
+      <div class="file-item-name">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/>
+          <polyline points="13 2 13 9 20 9"/>
+        </svg>
+        <span>${f.name}</span>
+      </div>
+      <span class="file-item-size">${(f.size/1024).toFixed(0)}KB</span>
+      <button class="file-item-remove" onclick="removeFile(${i})">×</button>
+    </div>
+  `).join('');
+  inner.style.display = uploadedFiles.length ? 'none' : 'flex';
+}
+
+function removeFile(idx) {
+  uploadedFiles.splice(idx, 1);
+  renderFileList();
+}
+
+// Drag & drop
+const dropZone = document.getElementById('fileDropZone');
+if (dropZone) {
+  dropZone.addEventListener('dragover', e => {
+    e.preventDefault();
+    dropZone.classList.add('dragover');
+  });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+    // prevent default file input trigger
+    e.stopPropagation();
+  });
+}
+
+// Send method selector
+function selectMethod(method) {
+  document.querySelectorAll('.send-method').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById('method-' + method);
+  if (target) target.classList.add('active');
+}
+
+// Direct click + hover listeners for .send-method labels
+document.querySelectorAll('.send-method').forEach(label => {
+  // Click — select method
+  label.addEventListener('click', () => {
+    const radio = label.querySelector('input[type=radio]');
+    if (radio) selectMethod(radio.value);
+  });
+  // Hover — visual highlight (works even with cursor:none)
+  label.addEventListener('mouseenter', () => label.classList.add('hovered'));
+  label.addEventListener('mouseleave', () => label.classList.remove('hovered'));
+  // Touch equivalent
+  label.addEventListener('touchstart', () => label.classList.add('hovered'), { passive: true });
+  label.addEventListener('touchend',   () => setTimeout(() => label.classList.remove('hovered'), 300), { passive: true });
+});
+
+// Form submit — routes to chosen channel
+function submitForm(e) {
+  e.preventDefault();
+  const method = document.querySelector('input[name="send_method"]:checked')?.value || 'email';
+  const name    = document.querySelector('.contact-form .form-input[placeholder="Ваше ім\'я"]')?.value || '';
+  const phone   = document.querySelector('.contact-form .form-input[type="tel"]')?.value || '';
+  const order   = document.querySelector('.contact-form .form-input[placeholder*="Лайтбокс"]')?.value || '';
+  const message = document.querySelector('.contact-form .form-textarea')?.value || '';
+
+  if (!name && !phone) { showToast('Заповніть ім\'я або телефон'); return; }
+
+  const text = `Нове замовлення LUMIS\nІм'я: ${name}\nТелефон: ${phone}\nТип: ${order}\nПовідомлення: ${message}`;
+  const igUrl = document.getElementById('ig-nav-link')?.href || 'https://instagram.com/lumis.ua';
+  const emailAddr = document.querySelector('.contact-item-value a[href^="mailto"]')?.href?.replace('mailto:','') || 'hello@lumis.ua';
+
+  const actions = {
+    email:     () => { window.location.href = `mailto:${emailAddr}?subject=Замовлення LUMIS від ${name}&body=${encodeURIComponent(text)}`; },
+    telegram:  () => { window.open(`https://t.me/lumisua?text=${encodeURIComponent(text)}`, '_blank'); },
+    viber:     () => { window.open(`viber://chat?number=%2B380441234567&text=${encodeURIComponent(text)}`, '_blank'); },
+    instagram: () => { window.open(igUrl, '_blank'); }
+  };
+
+  (actions[method] || actions.email)();
+
+  // Show success
+  const form = document.querySelector('.contact-form');
+  form.innerHTML = `
+    <div class="form-success show">
+      <svg class="form-success-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+      <div class="form-success-title">Запит надіслано</div>
+      <div class="form-success-sub">Ми зв'яжемось з вами найближчим часом</div>
+    </div>
+  `;
+}
+
+// ══════════════════════════════
+//  CALCULATOR PANEL
+// ══════════════════════════════
+const pcPrices = {
+  type: {
+    neon:     { base:2800, label:'Неонова вивіска' },
+    lightbox: { base:3500, label:'Лайтбокс' },
+    letters:  { base:4200, label:"Об'ємні літери" },
+    photo:    { base:5500, label:'Фотозона' },
+    sticker:  { base:800,  label:'Наліпки / вініл' },
+    custom:   { base:6000, label:'Індивідуальне' },
+  },
+  size: {
+    xs: { mult:0.6,  label:'XS · до 50 см' },
+    s:  { mult:1.0,  label:'S · 50–100 см' },
+    m:  { mult:1.55, label:'M · 100–150 см' },
+    l:  { mult:2.3,  label:'L · 150+ см' },
+  }
+};
+let pcState = { type:'neon', size:'s', material:'silicone', matMult:1.0, extras:0 };
+let pcAnimFrame, pcCurrentPrice = 3200;
+
+function toggleCalc() {
+  const popup   = document.getElementById('calc-popup');
+  const overlay = document.getElementById('calc-overlay');
+  const btn     = document.getElementById('calc-btn');
+  const open    = popup.style.display === 'none' || popup.style.display === '';
+  if (open) {
+    popup.style.display = 'block';
+    overlay.style.display = 'block';
+    requestAnimationFrame(() => {
+      popup.style.transform   = 'translateX(0)';
+      overlay.style.opacity   = '1';
+    });
+    document.body.style.overflow = 'hidden';
+  } else {
+    popup.style.transform  = 'translateX(100%)';
+    overlay.style.opacity  = '0';
+    setTimeout(() => { popup.style.display = 'none'; overlay.style.display = 'none'; }, 420);
+    document.body.style.overflow = '';
+  }
+  btn.style.borderColor = open ? 'var(--gold)' : 'var(--border)';
+  btn.style.color       = open ? 'var(--gold)' : 'var(--gray2)';
+  btn.style.background  = open ? 'rgba(200,169,110,0.08)' : 'var(--bg2)';
+}
+
+function pcSelect(group, el) {
+  el.closest('[id^="pc-"]').querySelectorAll('.pc-opt').forEach(o => {
+    o.style.borderColor = 'var(--border)';
+    o.style.color       = 'var(--gray2)';
+    o.style.background  = 'transparent';
+    o.classList.remove('selected');
+  });
+  el.style.borderColor = 'var(--gold)';
+  el.style.color       = 'var(--gold)';
+  el.style.background  = 'rgba(200,169,110,0.07)';
+  el.classList.add('selected');
+  pcState.type = el.dataset.val;
+  document.getElementById('rv-type2').textContent = el.dataset.label || el.dataset.val;
+  pcCalc();
+}
+
+function pcSelectSz(el) {
+  document.querySelectorAll('.pc-opt-sz').forEach(o => {
+    o.style.borderColor = 'var(--border)';
+    o.style.background  = 'transparent';
+    o.querySelector('div').style.color = 'var(--white)';
+    o.classList.remove('selected');
+  });
+  el.style.borderColor = 'var(--gold)';
+  el.style.background  = 'rgba(200,169,110,0.07)';
+  el.querySelector('div').style.color = 'var(--gold)';
+  el.classList.add('selected');
+  pcState.size = el.dataset.val;
+  document.getElementById('rv-size2').textContent = pcPrices.size[el.dataset.val].label;
+  pcCalc();
+}
+
+function pcSelectMat(el) {
+  document.querySelectorAll('.pc-opt-mat').forEach(o => {
+    o.style.borderColor = 'var(--border)';
+    o.style.background  = 'transparent';
+    o.querySelector('div').style.color = 'var(--white)';
+    o.classList.remove('selected');
+  });
+  el.style.borderColor = 'var(--gold)';
+  el.style.background  = 'rgba(200,169,110,0.06)';
+  el.querySelector('div').style.color = 'var(--gold)';
+  el.classList.add('selected');
+  pcState.material = el.dataset.val;
+  pcState.matMult  = parseFloat(el.dataset.mult);
+  document.getElementById('rv-mat2').textContent = el.querySelector('div').textContent;
+  pcCalc();
+}
+
+function pcToggleExt(el) {
+  const on = el.classList.toggle('selected');
+  el.style.borderColor = on ? 'var(--gold)' : 'var(--border)';
+  el.style.color       = on ? 'var(--gold)' : 'var(--gray2)';
+  el.style.background  = on ? 'rgba(200,169,110,0.07)' : 'transparent';
+  const check = el.querySelector('div');
+  if (check) { check.style.background = on ? 'var(--gold)' : ''; check.style.color = on ? 'var(--bg)' : ''; }
+  pcState.extras = 0;
+  document.querySelectorAll('.pc-ext.selected').forEach(e => { pcState.extras += parseInt(e.dataset.price); });
+  const extRow = document.getElementById('rv-ext-row');
+  const extEl  = document.getElementById('rv-ext2');
+  if (pcState.extras > 0) {
+    extRow.style.opacity = '1';
+    extEl.textContent = '+' + pcState.extras.toLocaleString('uk') + ' ₴';
+  } else {
+    extRow.style.opacity = '0.4';
+    extEl.textContent = '—';
+  }
+  pcCalc();
+}
+
+function pcCalc() {
+  const t = pcPrices.type[pcState.type] || pcPrices.type.neon;
+  const s = pcPrices.size[pcState.size] || pcPrices.size.s;
+  let total = Math.round(t.base * s.mult * pcState.matMult) + pcState.extras;
+  let discount = 0;
+  if (document.querySelectorAll('.pc-ext.selected').length >= 3) {
+    discount = Math.round(total * 0.05);
+    total -= discount;
+  }
+  const discRow = document.getElementById('rv-disc-row');
+  const discEl  = document.getElementById('rv-disc2');
+  if (discount > 0) {
+    discRow.style.opacity = '1';
+    discEl.textContent = '−' + discount.toLocaleString('uk') + ' ₴';
+  } else {
+    discRow.style.opacity = '0.4';
+    discEl.textContent = '—';
+  }
+  pcAnimatePrice(total);
+}
+
+function pcAnimatePrice(target) {
+  cancelAnimationFrame(pcAnimFrame);
+  const start = pcCurrentPrice, diff = target - start, duration = 500;
+  let startTime;
+  const el = document.getElementById('pc-price');
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    const p = Math.min((ts - startTime) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.innerHTML = Math.round(start + diff * ease).toLocaleString('uk') + ' <span style="font-size:18px;color:var(--gray2);">₴</span>';
+    if (p < 1) pcAnimFrame = requestAnimationFrame(step);
+    else pcCurrentPrice = target;
+  }
+  pcAnimFrame = requestAnimationFrame(step);
+}
+
+function pcReset() {
+  pcState = { type:'neon', size:'s', material:'silicone', matMult:1.0, extras:0 };
+  document.querySelectorAll('.pc-opt,.pc-opt-sz,.pc-opt-mat,.pc-ext').forEach(el => {
+    el.classList.remove('selected');
+    el.style.borderColor = 'var(--border)';
+    el.style.color       = el.classList.contains('pc-opt') || el.classList.contains('pc-ext') ? 'var(--gray2)' : '';
+    el.style.background  = 'transparent';
+    const check = el.querySelector('div');
+    if (check && el.classList.contains('pc-ext')) { check.style.background=''; check.style.color=''; }
+  });
+  document.querySelector('[data-val="neon"]').click();
+  document.querySelector('[data-val="s"].pc-opt-sz').click();
+  document.querySelector('[data-val="silicone"]').click();
+}
+
+function pcSend() {
+  const typeEl = document.querySelector('.pc-opt.selected');
+  const sizeEl = document.querySelector('.pc-opt-sz.selected');
+  const matEl  = document.querySelector('.pc-opt-mat.selected');
+  const type   = typeEl ? (typeEl.dataset.label || typeEl.dataset.val) : '';
+  const size   = sizeEl ? pcPrices.size[sizeEl.dataset.val].label : '';
+  const mat    = matEl  ? matEl.querySelector('div').textContent : '';
+  const extras = [...document.querySelectorAll('.pc-ext.selected')].map(e=>e.textContent.trim()).join(', ') || '—';
+  const t = pcPrices.type[pcState.type]||pcPrices.type.neon;
+  const s = pcPrices.size[pcState.size]||pcPrices.size.s;
+  let total = Math.round(t.base * s.mult * pcState.matMult) + pcState.extras;
+  const msg = `Запит з калькулятора LUMIS
+Тип: ${type}
+Розмір: ${size}
+Матеріал: ${mat}
+Додатково: ${extras}
+Орієнтовна ціна: ~${total.toLocaleString('uk')} ₴`;
+  window.location.href = `mailto:hello@lumis.ua?subject=Розрахунок замовлення LUMIS&body=${encodeURIComponent(msg)}`;
+}
+
+// Close on overlay click handled by onclick attribute
+// ══════════════════════════════
+//  THEME TOGGLE
+// ══════════════════════════════
+const THEME_KEY = 'lumis_theme';
+
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light-mode');
+  localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark');
+}
+
+// Apply saved theme on load
+(function() {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved === 'light') {
+    document.body.classList.add('light-mode');
+  } else if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      document.body.classList.add('light-mode');
+    }
+  }
+})();
+
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+    if (!localStorage.getItem(THEME_KEY)) {
+      document.body.classList.toggle('light-mode', e.matches);
+    }
+  });
+}
+
+
+// ══════════════════════════════
+//  ADMIN PANEL JS
+// ══════════════════════════════
+const ADMIN_PASS_KEY = 'lumis_admin_pass';
+const ADMIN_DATA_KEY = 'lumis_admin_data';
+let adminUnlocked = false;
+
+// ── Open/Close ──
+function openAdmin() {
+  document.getElementById('admin-overlay').classList.add('open');
+  document.getElementById('admin-panel').classList.add('open');
+  if (!adminUnlocked) {
+    document.getElementById('admin-lock').classList.remove('hidden');
+    setTimeout(() => document.getElementById('lock-input').focus(), 400);
+  }
+}
+function closeAdmin() {
+  document.getElementById('admin-overlay').classList.remove('open');
+  document.getElementById('admin-panel').classList.remove('open');
+}
+
+// ── Password ──
+function checkPass() {
+  const stored = localStorage.getItem(ADMIN_PASS_KEY) || 'lumis2024';
+  const val = document.getElementById('lock-input').value;
+  if (val === stored) {
+    adminUnlocked = true;
+    document.getElementById('admin-lock').classList.add('hidden');
+    loadAdminData();
+    buildDynamicFields();
+  } else {
+    document.getElementById('lock-err').textContent = 'Невірний пароль';
+    document.getElementById('lock-input').value = '';
+    setTimeout(() => document.getElementById('lock-err').textContent = '', 2000);
+  }
+}
+function changePass() {
+  const np = prompt('Новий пароль:');
+  if (np && np.length >= 4) {
+    localStorage.setItem(ADMIN_PASS_KEY, np);
+    showToast('Пароль змінено');
+  }
+}
+
+// ── Tabs ──
+function switchTab(name) {
+  document.querySelectorAll('.adm-tab').forEach((t,i) => {
+    const names = ['content','photos','contacts','settings'];
+    t.classList.toggle('active', names[i] === name);
+  });
+  document.querySelectorAll('.adm-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById('pane-' + name).classList.add('active');
+}
+
+// ── Build dynamic fields ──
+const portfolioNames = ['Фотозона Bloom','Neon Love','Лайтбокс Café M','AURA Letters','Брендинг вітрин','Індивідуальний проєкт'];
+const portfolioTypes = ['Фотозона','Неонова вивіска','Лайтбокс','Об\'ємні літери','Наліпки / вінілова плівка','Нестандартне замовлення'];
+let carouselLabels = ['Фотозони','Лайтбокси','Неонові вивіски','Об\'ємні літери','Наліпки та вініл','Індивідуальне'];
+// Default SVG icons for new slides (cycles through a set)
+const defaultIcons = [
+  // star
+  '<circle cx="55" cy="55" r="22" fill="none" stroke="#c8a96e" stroke-width="1.4"/><polygon points="55,33 60,48 76,48 63,58 68,73 55,63 42,73 47,58 34,48 50,48" fill="none" stroke="#c8a96e" stroke-width="1.3"/>',
+  // diamond  
+  '<polygon points="55,28 80,55 55,82 30,55" fill="none" stroke="#c8a96e" stroke-width="1.4"/><polygon points="55,38 70,55 55,72 40,55" fill="none" stroke="#c8a96e" stroke-width="0.8" opacity="0.5"/>',
+  // lightning
+  '<polyline points="62,24 44,58 57,58 48,86 72,48 59,48 68,24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linejoin="round"/>',
+  // circle target
+  '<circle cx="55" cy="55" r="28" fill="none" stroke="#c8a96e" stroke-width="1.4"/><circle cx="55" cy="55" r="16" fill="none" stroke="#c8a96e" stroke-width="1"/><circle cx="55" cy="55" r="5" fill="#c8a96e" opacity="0.5"/>',
+];
+const defaultGradients = [
+  'radial-gradient(135deg at 40% 35%, #1e1a14, #0f0d0b)',
+  'radial-gradient(135deg at 60% 40%, #141820, #0a0c10)',
+  'radial-gradient(135deg at 35% 60%, #1a1820, #0c0a10)',
+  'radial-gradient(135deg at 50% 30%, #1a1410, #0d0b08)',
+];
+const stepNames = ['Заявка','Дизайн','Виготовлення','Доставка'];
+const stepDescs = [
+  'Залишаєте запит або телефонуєте. Обговорюємо завдання, терміни та бюджет.',
+  'Безкоштовно розробляємо макет та узгоджуємо з вами до повного схвалення.',
+  'Виробляємо на власному обладнанні. Контролюємо якість на кожному етапі.',
+  'Доставляємо та за потреби встановлюємо. Надаємо гарантію на всі вироби.'
+];
+
+function buildDynamicFields() {
+  // Portfolio titles
+  const pt = document.getElementById('portfolio-titles');
+  pt.innerHTML = portfolioNames.map((n,i) => `
+    <div class="adm-field">
+      <label class="adm-label">Проєкт ${i+1} — назва</label>
+      <input class="adm-input" id="pi-name-${i}" value="${n}" oninput="liveUpdate()">
+    </div>
+    <div class="adm-field" style="margin-top:-8px;">
+      <label class="adm-label">Тип</label>
+      <input class="adm-input" id="pi-type-${i}" value="${portfolioTypes[i]}" oninput="liveUpdate()">
+    </div>
+  `).join('');
+
+  // Process steps
+  const ps = document.getElementById('process-steps-edit');
+  ps.innerHTML = stepNames.map((n,i) => `
+    <div class="adm-field">
+      <label class="adm-label">Крок ${i+1} — назва</label>
+      <input class="adm-input" id="step-name-${i}" value="${n}" oninput="liveUpdate()">
+    </div>
+    <div class="adm-field" style="margin-top:-8px;">
+      <label class="adm-label">Опис</label>
+      <textarea class="adm-textarea" id="step-desc-${i}" oninput="liveUpdate()">${stepDescs[i]}</textarea>
+    </div>
+  `).join('');
+
+  // Portfolio photo slots
+  const pp = document.getElementById('portfolio-photos');
+  pp.innerHTML = portfolioNames.map((n,i) => `
+    <div class="adm-photo-slot" id="pslot-${i}">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'portfolio',${i})">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <span>${n.split(' ')[0]}</span>
+    </div>
+  `).join('');
+
+  // Carousel photo slots + label inputs
+  rebuildCarouselAdmin();
+}
+
+// ── Carousel admin management ──
+function rebuildCarouselAdmin() {
+  const cp = document.getElementById('carousel-photos');
+  if (!cp) return;
+  const countEl = document.getElementById('carousel-count');
+  if (countEl) countEl.textContent = carouselLabels.length;
+  cp.innerHTML = carouselLabels.map((n,i) => `
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <div class="adm-photo-slot" id="cslot-${i}" title="${n}">
+        <input type="file" accept="image/*" onchange="loadPhoto(this,'carousel',${i})">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span style="font-size:7px;letter-spacing:0.12em;text-align:center;padding:0 4px;">${n.split(' ')[0]}</span>
+      </div>
+      <input class="adm-input" style="font-size:8px;padding:5px 7px;" 
+        id="car-label-${i}" value="${n}" placeholder="Назва слайду"
+        oninput="carouselLabels[${i}]=this.value;updateCarouselLabel(${i})">
+    </div>
+  `).join('');
+}
+
+function updateCarouselLabel(i) {
+  // Update label on the actual slide
+  const slides = car.querySelectorAll('.car-card:not(.car-clone)');
+  if (slides[i]) {
+    const lbl = slides[i].querySelector('.car-label');
+    if (lbl) lbl.textContent = carouselLabels[i];
+  }
+  rebuildInfiniteClones();
+}
+
+function addCarouselSlide() {
+  const name = prompt('Назва нового слайду:', 'Новий слайд') || 'Новий слайд';
+  const idx = carouselLabels.length;
+  carouselLabels.push(name);
+
+  // Build new card HTML
+  const iconIdx = idx % defaultIcons.length;
+  const gradIdx = idx % defaultGradients.length;
+  const newCard = document.createElement('div');
+  newCard.className = 'car-card';
+  newCard.setAttribute('onclick', "document.getElementById('contact').scrollIntoView({behavior:'smooth'})");
+  newCard.innerHTML = `
+    <div class="car-circle" style="background:${defaultGradients[gradIdx]};">
+      <svg viewBox="0 0 110 110" fill="none" width="80" height="80">
+        ${defaultIcons[iconIdx]}
+      </svg>
+    </div>
+    <div class="car-label">${name}</div>`;
+
+  car.appendChild(newCard);
+
+  // Add a dot
+  const dotsEl = document.getElementById('carDots');
+  const dot = document.createElement('div');
+  dot.className = 'car-dot';
+  dotsEl.appendChild(dot);
+
+  rebuildInfiniteClones();
+  rebuildCarouselAdmin();
+  showToast('Слайд додано ✓');
+}
+
+function removeLastCarouselSlide() {
+  const slides = car.querySelectorAll('.car-card:not(.car-clone)');
+  if (slides.length <= 1) { showToast('Мінімум 1 слайд'); return; }
+  if (!confirm('Видалити останній слайд?')) return;
+  slides[slides.length - 1].remove();
+  carouselLabels.pop();
+  const dotsEl = document.getElementById('carDots');
+  const dots = dotsEl.querySelectorAll('.car-dot');
+  if (dots.length > 1) dots[dots.length - 1].remove();
+  rebuildInfiniteClones();
+  rebuildCarouselAdmin();
+  showToast('Слайд видалено');
+}
+
+window.addCarouselSlide      = addCarouselSlide;
+window.removeLastCarouselSlide = removeLastCarouselSlide;
+window.updateCarouselLabel   = updateCarouselLabel;
+
+// ── Live update ──
+function liveUpdate() {
+  const v = id => { const el = document.getElementById(id); return el ? el.value : ''; };
+
+  // Brand name (nav + footer)
+  const brand = v('edit-brand');
+  document.querySelectorAll('.nav-logo-text, .footer-logo').forEach(el => el.textContent = brand);
+  document.querySelector('.adm-title span').textContent = ' панель';
+
+  // Hero
+  const eyebrow = document.querySelector('.hero-eyebrow');
+  if (eyebrow) eyebrow.textContent = v('edit-eyebrow');
+
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub) heroSub.innerHTML = v('edit-hero-sub').replace(/\n/g,'<br>');
+
+  // About
+  const aboutPs = document.querySelectorAll('.about-text p');
+  if (aboutPs[0]) aboutPs[0].textContent = v('edit-about-p1');
+  if (aboutPs[1]) aboutPs[1].textContent = v('edit-about-p2');
+  const statNum = document.querySelector('.about-stat-num');
+  const statLbl = document.querySelector('.about-stat-label');
+  if (statNum) statNum.textContent = v('edit-stat-num');
+  if (statLbl) statLbl.textContent = v('edit-stat-label');
+
+  // Portfolio items
+  const piNames = document.querySelectorAll('.pi-label-name');
+  const piTypes = document.querySelectorAll('.pi-label-type');
+  for (let i=0; i<6; i++) {
+    if (piNames[i]) piNames[i].textContent = v('pi-name-'+i);
+    if (piTypes[i]) piTypes[i].textContent = v('pi-type-'+i);
+  }
+
+  // Process steps
+  const stepNameEls = document.querySelectorAll('.step-name');
+  const stepDescEls = document.querySelectorAll('.step-desc');
+  for (let i=0; i<4; i++) {
+    if (stepNameEls[i]) stepNameEls[i].textContent = v('step-name-'+i);
+    if (stepDescEls[i]) stepDescEls[i].textContent = v('step-desc-'+i);
+  }
+
+  // Contacts
+  const phoneEl = document.querySelector('.contact-item-value a[href^="tel"]');
+  if (phoneEl) { phoneEl.textContent = v('edit-phone'); phoneEl.href = 'tel:'+v('edit-phone').replace(/[^+0-9]/g,''); }
+  const emailEl = document.querySelector('.contact-item-value a[href^="mailto"]');
+  if (emailEl) { emailEl.textContent = v('edit-email'); emailEl.href = 'mailto:'+v('edit-email'); }
+  const addrEls = document.querySelectorAll('.contact-item-value');
+  if (addrEls[2]) addrEls[2].textContent = v('edit-address');
+  if (addrEls[3]) addrEls[3].textContent = v('edit-hours');
+  const footCopy = document.querySelector('.footer-copy');
+  if (footCopy) footCopy.textContent = v('edit-copyright');
+
+  // Instagram
+  const igUrl = v('edit-instagram');
+  document.querySelectorAll('.ig-icon-btn').forEach(a => a.href = igUrl);
+}
+
+// ── Load photo into slot ──
+function loadPhoto(input, type, idx) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5*1024*1024) { showToast('Файл занадто великий (макс 5MB)'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const slotId = type === 'portfolio' ? 'pslot-'+idx : 'cslot-'+idx;
+    const slot = document.getElementById(slotId);
+    // Remove old img if any
+    const old = slot.querySelector('img');
+    if (old) old.remove();
+    const img = document.createElement('img');
+    img.src = e.target.result;
+    slot.appendChild(img);
+
+    if (type === 'portfolio') {
+      // Apply to portfolio grid item
+      const items = document.querySelectorAll('.portfolio-item');
+      if (items[idx]) {
+        items[idx].style.backgroundImage = `url(${e.target.result})`;
+        items[idx].style.backgroundSize = 'cover';
+        items[idx].style.backgroundPosition = 'center';
+        const icon = items[idx].querySelector('.pi-icon');
+        if (icon) icon.style.display = 'none';
+      }
+    } else {
+      // Apply to carousel circle
+      const circles = document.querySelectorAll('.car-circle');
+      if (circles[idx]) {
+        circles[idx].style.backgroundImage = `url(${e.target.result})`;
+        circles[idx].style.backgroundSize = 'cover';
+        circles[idx].style.backgroundPosition = 'center';
+        const svg = circles[idx].querySelector('svg');
+        if (svg) svg.style.display = 'none';
+      }
+    }
+    showToast('Фото завантажено');
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Color update ──
+function updateColor(varName, val) {
+  document.documentElement.style.setProperty('--'+varName, val);
+  const hexInput = document.getElementById('color-'+varName+'-hex');
+  if (hexInput) hexInput.value = val;
+}
+function updateColorFromHex(varName, val) {
+  if (/^#[0-9a-fA-F]{6}$/.test(val)) {
+    document.documentElement.style.setProperty('--'+varName, val);
+    const picker = document.getElementById('color-'+varName);
+    if (picker) picker.value = val;
+  }
+}
+
+// ── Toggle section ──
+function toggleSection(sectionId, toggleEl) {
+  toggleEl.classList.toggle('on');
+  const el = document.getElementById(sectionId);
+  if (el) el.style.display = toggleEl.classList.contains('on') ? '' : 'none';
+}
+function toggleInstagram(toggleEl) {
+  toggleEl.classList.toggle('on');
+  const show = toggleEl.classList.contains('on');
+  document.querySelectorAll('.ig-icon-btn').forEach(el => el.style.display = show ? '' : 'none');
+}
+function toggleCursor(toggleEl) {
+  toggleEl.classList.toggle('on');
+  const show = toggleEl.classList.contains('on');
+  document.getElementById('cursor').style.display = show ? '' : 'none';
+  document.getElementById('cursorRing').style.display = show ? '' : 'none';
+  document.body.style.cursor = show ? 'none' : '';
+}
+
+// ── Save / Load / Reset ──
+function saveAll() {
+  const data = {};
+  document.querySelectorAll('.adm-input, .adm-textarea').forEach(el => {
+    if (el.id) data[el.id] = el.value;
+  });
+  localStorage.setItem(ADMIN_DATA_KEY, JSON.stringify(data));
+  showToast('Збережено ✓');
+}
+function loadAdminData() {
+  try {
+    const data = JSON.parse(localStorage.getItem(ADMIN_DATA_KEY) || '{}');
+    Object.entries(data).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+    liveUpdate();
+  } catch(e) {}
+}
+function resetAll() {
+  if (!confirm('Скинути всі зміни?')) return;
+  localStorage.removeItem(ADMIN_DATA_KEY);
+  location.reload();
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.getElementById('adm-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ── Keyboard shortcut: Ctrl+Shift+A ──
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.shiftKey && e.key === 'A') openAdmin();
+});
+
+
+// Expose functions to global scope for onclick handlers
+window.carScroll = typeof carScroll !== "undefined" ? carScroll : window.carScroll;
+window.toggleTheme = typeof toggleTheme !== "undefined" ? toggleTheme : window.toggleTheme;
+window.toggleCalc = typeof toggleCalc !== "undefined" ? toggleCalc : window.toggleCalc;
+window.openAdmin = typeof openAdmin !== "undefined" ? openAdmin : window.openAdmin;
+window.closeAdmin = typeof closeAdmin !== "undefined" ? closeAdmin : window.closeAdmin;
+window.switchTab = typeof switchTab !== "undefined" ? switchTab : window.switchTab;
+window.saveAll = typeof saveAll !== "undefined" ? saveAll : window.saveAll;
+window.resetAll = typeof resetAll !== "undefined" ? resetAll : window.resetAll;
+window.changePass = typeof changePass !== "undefined" ? changePass : window.changePass;
+window.checkPass = typeof checkPass !== "undefined" ? checkPass : window.checkPass;
+window.toggleSection = typeof toggleSection !== "undefined" ? toggleSection : window.toggleSection;
+window.toggleInstagram = typeof toggleInstagram !== "undefined" ? toggleInstagram : window.toggleInstagram;
+window.toggleCursor = typeof toggleCursor !== "undefined" ? toggleCursor : window.toggleCursor;
+window.loadPhoto = typeof loadPhoto !== "undefined" ? loadPhoto : window.loadPhoto;
+window.selectMethod = typeof selectMethod !== "undefined" ? selectMethod : window.selectMethod;
+window.submitForm = typeof submitForm !== "undefined" ? submitForm : window.submitForm;
+window.handleFiles = typeof handleFiles !== "undefined" ? handleFiles : window.handleFiles;
+window.removeFile = typeof removeFile !== "undefined" ? removeFile : window.removeFile;
+window.pcSelect = typeof pcSelect !== "undefined" ? pcSelect : window.pcSelect;
+window.pcSelectSz = typeof pcSelectSz !== "undefined" ? pcSelectSz : window.pcSelectSz;
+window.pcSelectMat = typeof pcSelectMat !== "undefined" ? pcSelectMat : window.pcSelectMat;
+window.pcToggleExt = typeof pcToggleExt !== "undefined" ? pcToggleExt : window.pcToggleExt;
+window.pcReset = typeof pcReset !== "undefined" ? pcReset : window.pcReset;
+window.pcSend = typeof pcSend !== "undefined" ? pcSend : window.pcSend;
+window.select = typeof select !== "undefined" ? select : window.select;
+window.toggleExtra = typeof toggleExtra !== "undefined" ? toggleExtra : window.toggleExtra;
+window.sendCalc = typeof sendCalc !== "undefined" ? sendCalc : window.sendCalc;
+window.resetCalc = typeof resetCalc !== "undefined" ? resetCalc : window.resetCalc;
+window.updateColor = typeof updateColor !== "undefined" ? updateColor : window.updateColor;
+window.updateColorFromHex = typeof updateColorFromHex !== "undefined" ? updateColorFromHex : window.updateColorFromHex;
+
+
+// ── HAMBURGER MENU ──
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const ham  = document.getElementById('hamburger');
+  const open = menu.style.display === 'none' || menu.style.display === '';
+  if (open) {
+    menu.style.display = 'flex';
+    requestAnimationFrame(() => { menu.style.opacity = '1'; });
+    document.body.style.overflow = 'hidden';
+    ham.style.color = 'var(--gold)';
+  } else {
+    closeMenu();
+  }
+}
+function closeMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const ham  = document.getElementById('hamburger');
+  menu.style.opacity = '0';
+  setTimeout(() => { menu.style.display = 'none'; }, 300);
+  document.body.style.overflow = '';
+  ham.style.color = 'var(--gold)';
+}
+window.addEventListener('resize', () => {
+  cardW = getCardW();
+  rebuildInfiniteClones();
+});
+
+window.toggleMenu = toggleMenu;
+window.closeMenu  = closeMenu;
+
+}); // end DOMContentLoaded
+</script>
+
+<!-- FIXED BUTTONS -->
+<button onclick="openAdmin()" title="Адмін панель" style="position:fixed;bottom:136px;right:28px;z-index:1000;cursor:pointer;width:48px;height:48px;background:var(--bg2);border:1px solid var(--border);color:var(--gray2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 20px rgba(0,0,0,0.3);" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--gray2)'">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+</button>
+
+<button id="calc-btn" onclick="toggleCalc()" title="Калькулятор вартості" style="position:fixed;bottom:84px;right:28px;z-index:1000;width:48px;height:48px;background:var(--bg2);border:1px solid var(--border);color:var(--gray2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 20px rgba(0,0,0,0.3);" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--gray2)'">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
+</button>
+
+<!-- CALC OVERLAY -->
+<div id="calc-overlay" onclick="toggleCalc()" style="display:none;position:fixed;inset:0;background:rgba(10,8,6,0.65);z-index:1499;opacity:0;transition:opacity 0.4s;backdrop-filter:blur(4px);"></div>
+
+<!-- CALC PANEL (full) -->
+<div id="calc-popup" style="display:none;position:fixed;top:0;right:0;bottom:0;z-index:1500;width:min(820px,100vw);overflow-y:auto;background:var(--bg2);border-left:1px solid var(--border);box-shadow:-20px 0 80px rgba(0,0,0,0.6);transform:translateX(100%);transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);">
+
+  <!-- Header -->
+  <div style="padding:28px 40px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg2);z-index:10;backdrop-filter:blur(8px);">
+    <div>
+      <div style="font-size:8px;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">LUMIS · Онлайн-оцінка</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:0.08em;color:var(--white);">Калькулятор <em style="font-style:italic;color:var(--gold);">вартості</em></div>
+    </div>
+    <button onclick="toggleCalc()" style="background:none;border:1px solid var(--border);color:var(--gray2);width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;flex-shrink:0;" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--gray2)'">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+    </button>
+  </div>
+
+  <!-- Body -->
+  <div id="calc-inner-grid" style="display:grid;grid-template-columns:1fr 300px;gap:1px;background:var(--border);min-height:calc(100vh - 90px);">
+
+    <!-- LEFT: Steps -->
+    <div style="background:var(--bg2);padding:40px;">
+      <div style="display:flex;flex-direction:column;gap:36px;">
+
+        <!-- Step 1: Type -->
+        <div>
+          <div style="font-size:8px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px;">Крок 01 · Тип виробу<div style="flex:1;height:1px;background:var(--border);"></div></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="pc-type">
+            <div class="pc-opt selected" data-val="neon"     data-label="Неонова вивіска" onclick="pcSelect('type',this)" style="border:1px solid var(--gold);padding:10px 18px;font-size:10px;letter-spacing:0.15em;color:var(--gold);cursor:pointer;background:rgba(200,169,110,0.07);transition:all 0.25s;display:flex;align-items:center;gap:8px;"><span style="opacity:.7;">💡</span>Неонова вивіска</div>
+            <div class="pc-opt" data-val="lightbox" data-label="Лайтбокс"           onclick="pcSelect('type',this)" style="border:1px solid var(--border);padding:10px 18px;font-size:10px;letter-spacing:0.15em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><span style="opacity:.7;">🔲</span>Лайтбокс</div>
+            <div class="pc-opt" data-val="letters" data-label="Об'ємні літери"      onclick="pcSelect('type',this)" style="border:1px solid var(--border);padding:10px 18px;font-size:10px;letter-spacing:0.15em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><span style="opacity:.7;">🔤</span>Об'ємні літери</div>
+            <div class="pc-opt" data-val="photo"   data-label="Фотозона"             onclick="pcSelect('type',this)" style="border:1px solid var(--border);padding:10px 18px;font-size:10px;letter-spacing:0.15em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><span style="opacity:.7;">📸</span>Фотозона</div>
+            <div class="pc-opt" data-val="sticker" data-label="Наліпки / вініл"      onclick="pcSelect('type',this)" style="border:1px solid var(--border);padding:10px 18px;font-size:10px;letter-spacing:0.15em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><span style="opacity:.7;">🏷️</span>Наліпки / вініл</div>
+            <div class="pc-opt" data-val="custom"  data-label="Індивідуальне"        onclick="pcSelect('type',this)" style="border:1px solid var(--border);padding:10px 18px;font-size:10px;letter-spacing:0.15em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><span style="opacity:.7;">⚙️</span>Індивідуальне</div>
+          </div>
+        </div>
+
+        <!-- Step 2: Size -->
+        <div>
+          <div style="font-size:8px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px;">Крок 02 · Розмір<div style="flex:1;height:1px;background:var(--border);"></div></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;" id="pc-size">
+            <div class="pc-opt-sz" data-val="xs" onclick="pcSelectSz(this)" style="border:1px solid var(--border);padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.25s;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);line-height:1;margin-bottom:5px;">XS</div>
+              <div style="font-size:8px;letter-spacing:0.12em;color:var(--gray);">до 50 см</div>
+            </div>
+            <div class="pc-opt-sz selected" data-val="s" onclick="pcSelectSz(this)" style="border:1px solid var(--gold);padding:16px 8px;text-align:center;cursor:pointer;background:rgba(200,169,110,0.07);transition:all 0.25s;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:5px;">S</div>
+              <div style="font-size:8px;letter-spacing:0.12em;color:var(--gray);">50–100 см</div>
+            </div>
+            <div class="pc-opt-sz" data-val="m" onclick="pcSelectSz(this)" style="border:1px solid var(--border);padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.25s;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);line-height:1;margin-bottom:5px;">M</div>
+              <div style="font-size:8px;letter-spacing:0.12em;color:var(--gray);">100–150 см</div>
+            </div>
+            <div class="pc-opt-sz" data-val="l" onclick="pcSelectSz(this)" style="border:1px solid var(--border);padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.25s;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);line-height:1;margin-bottom:5px;">L</div>
+              <div style="font-size:8px;letter-spacing:0.12em;color:var(--gray);">150+ см</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Material -->
+        <div>
+          <div style="font-size:8px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px;">Крок 03 · Матеріал<div style="flex:1;height:1px;background:var(--border);"></div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="pc-material">
+            <div class="pc-opt-mat selected" data-val="silicone" data-mult="1.0" onclick="pcSelectMat(this)" style="border:1px solid var(--gold);padding:16px 18px;cursor:pointer;background:rgba(200,169,110,0.06);transition:all 0.25s;">
+              <div style="font-size:11px;letter-spacing:0.08em;color:var(--gold);margin-bottom:3px;">Силіконовий неон</div>
+              <div style="font-size:9px;letter-spacing:0.06em;color:var(--gray);">Гнучкий, IP67, рівне світіння</div>
+              <div style="font-size:9px;color:var(--gold2);margin-top:6px;letter-spacing:0.1em;">Стандарт</div>
+            </div>
+            <div class="pc-opt-mat" data-val="acrylic" data-mult="1.15" onclick="pcSelectMat(this)" style="border:1px solid var(--border);padding:16px 18px;cursor:pointer;transition:all 0.25s;">
+              <div style="font-size:11px;letter-spacing:0.08em;color:var(--white);margin-bottom:3px;">Акриловий</div>
+              <div style="font-size:9px;letter-spacing:0.06em;color:var(--gray);">LG Chem, чіткі контури</div>
+              <div style="font-size:9px;color:var(--gray2);margin-top:6px;letter-spacing:0.1em;">+15%</div>
+            </div>
+            <div class="pc-opt-mat" data-val="steel" data-mult="1.35" onclick="pcSelectMat(this)" style="border:1px solid var(--border);padding:16px 18px;cursor:pointer;transition:all 0.25s;">
+              <div style="font-size:11px;letter-spacing:0.08em;color:var(--white);margin-bottom:3px;">Нержавіюча сталь</div>
+              <div style="font-size:9px;letter-spacing:0.06em;color:var(--gray);">AISI 304, для вулиці</div>
+              <div style="font-size:9px;color:var(--gray2);margin-top:6px;letter-spacing:0.1em;">+35%</div>
+            </div>
+            <div class="pc-opt-mat" data-val="led" data-mult="1.25" onclick="pcSelectMat(this)" style="border:1px solid var(--border);padding:16px 18px;cursor:pointer;transition:all 0.25s;">
+              <div style="font-size:11px;letter-spacing:0.08em;color:var(--white);margin-bottom:3px;">LED Osram</div>
+              <div style="font-size:9px;letter-spacing:0.06em;color:var(--gray);">Преміум-підсвічування</div>
+              <div style="font-size:9px;color:var(--gray2);margin-top:6px;letter-spacing:0.1em;">+25%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Extras -->
+        <div>
+          <div style="font-size:8px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px;">Крок 04 · Додатково<div style="flex:1;height:1px;background:var(--border);"></div></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="pc-extras">
+            <div class="pc-ext" data-price="800"  onclick="pcToggleExt(this)" style="border:1px solid var(--border);padding:10px 16px;font-size:10px;letter-spacing:0.12em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><div style="width:14px;height:14px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;transition:all 0.2s;">✓</div>Монтаж</div>
+            <div class="pc-ext" data-price="600"  onclick="pcToggleExt(this)" style="border:1px solid var(--border);padding:10px 16px;font-size:10px;letter-spacing:0.12em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><div style="width:14px;height:14px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;transition:all 0.2s;">✓</div>Дизайн-макет</div>
+            <div class="pc-ext" data-price="1200" onclick="pcToggleExt(this)" style="border:1px solid var(--border);padding:10px 16px;font-size:10px;letter-spacing:0.12em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><div style="width:14px;height:14px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;transition:all 0.2s;">✓</div>Експрес 48 год</div>
+            <div class="pc-ext" data-price="500"  onclick="pcToggleExt(this)" style="border:1px solid var(--border);padding:10px 16px;font-size:10px;letter-spacing:0.12em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><div style="width:14px;height:14px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;transition:all 0.2s;">✓</div>Вулична захист IP</div>
+            <div class="pc-ext" data-price="400"  onclick="pcToggleExt(this)" style="border:1px solid var(--border);padding:10px 16px;font-size:10px;letter-spacing:0.12em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><div style="width:14px;height:14px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;transition:all 0.2s;">✓</div>Диммер яскравості</div>
+            <div class="pc-ext" data-price="300"  onclick="pcToggleExt(this)" style="border:1px solid var(--border);padding:10px 16px;font-size:10px;letter-spacing:0.12em;color:var(--gray2);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:8px;"><div style="width:14px;height:14px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;transition:all 0.2s;">✓</div>Доставка Київ</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: Result -->
+    <div style="background:var(--bg3);padding:36px 28px;display:flex;flex-direction:column;gap:16px;position:sticky;top:90px;align-self:start;">
+      <div style="font-size:8px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);">Ваше замовлення</div>
+
+      <!-- Summary lines -->
+      <div style="border:1px solid var(--border);display:flex;flex-direction:column;">
+        <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--border);">
+          <span style="font-size:9px;letter-spacing:0.1em;color:var(--gray2);">Тип</span>
+          <span id="rv-type2" style="font-size:9px;letter-spacing:0.08em;color:var(--white);text-align:right;">Неонова вивіска</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--border);">
+          <span style="font-size:9px;letter-spacing:0.1em;color:var(--gray2);">Розмір</span>
+          <span id="rv-size2" style="font-size:9px;letter-spacing:0.08em;color:var(--white);">S · 50–100 см</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--border);">
+          <span style="font-size:9px;letter-spacing:0.1em;color:var(--gray2);">Матеріал</span>
+          <span id="rv-mat2" style="font-size:9px;letter-spacing:0.08em;color:var(--white);">Силіконовий неон</span>
+        </div>
+        <div id="rv-ext-row" style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--border);opacity:0.4;">
+          <span style="font-size:9px;letter-spacing:0.1em;color:var(--gray2);">Додатково</span>
+          <span id="rv-ext2" style="font-size:9px;letter-spacing:0.08em;color:var(--white);">—</span>
+        </div>
+        <div id="rv-disc-row" style="display:flex;justify-content:space-between;padding:10px 14px;opacity:0.4;">
+          <span style="font-size:9px;letter-spacing:0.1em;color:var(--gold);">Знижка 5%</span>
+          <span id="rv-disc2" style="font-size:9px;color:var(--gold2);">—</span>
+        </div>
+      </div>
+
+      <!-- Price -->
+      <div style="border:1px solid var(--border);padding:24px 16px;text-align:center;background:rgba(200,169,110,0.03);position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(200,169,110,0.07),transparent 70%);"></div>
+        <div style="font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;">від</div>
+        <div id="pc-price" style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--gold);line-height:1;position:relative;">3 200 <span style="font-size:18px;color:var(--gray2);">₴</span></div>
+        <div style="font-size:8px;letter-spacing:0.2em;color:var(--gray);margin-top:6px;">орієнтовно · без ПДВ</div>
+      </div>
+
+      <div style="font-size:8.5px;line-height:1.8;color:var(--gray);letter-spacing:0.05em;padding:10px 12px;border:1px solid rgba(200,169,110,0.08);background:rgba(200,169,110,0.02);">
+        Точна вартість залежить від складності макету. Фінальний розрахунок — після консультації.
+      </div>
+
+      <button onclick="pcSend()" style="width:100%;background:var(--gold);color:var(--bg);border:none;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;padding:14px;cursor:pointer;transition:background 0.3s;" onmouseenter="this.style.background='var(--gold2)'" onmouseleave="this.style.background='var(--gold)'">Отримати точний розрахунок</button>
+      <button onclick="pcReset()" style="width:100%;background:transparent;color:var(--gray);border:1px solid var(--border);font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;padding:11px;cursor:pointer;transition:all 0.3s;" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold2)'" onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--gray)'">Скинути</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- THEME TOGGLE (fixed) -->
+<button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" title="Змінити тему" style="position:fixed;bottom:28px;right:28px;z-index:1000;cursor:pointer;width:48px;height:48px;box-shadow:0 4px 24px rgba(200,169,110,0.2);">
+  <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+  </svg>
+  <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+
+<!-- OVERLAY -->
+<div id="admin-overlay" onclick="closeAdmin()"></div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+
+  <!-- PASSWORD LOCK -->
+  <div id="admin-lock">
+    <div class="lock-logo">LUMIS</div>
+    <div class="lock-sub">Адміністративна панель</div>
+    <div class="adm-field" style="width:100%;max-width:280px;">
+      <label class="adm-label">Пароль</label>
+      <input id="lock-input" class="adm-input" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPass()">
+    </div>
+    <div class="lock-err" id="lock-err"></div>
+    <button class="adm-btn" style="max-width:280px;" onclick="checkPass()">Увійти</button>
+    <div class="lock-sub" style="font-size:8px;margin-top:8px;">Пароль за замовчуванням: <span style="color:var(--gold)">lumis2024</span></div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="adm-header">
+    <div class="adm-title">Адмін <span>панель</span></div>
+    <button class="adm-close" onclick="closeAdmin()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- TABS -->
+  <div class="adm-tabs">
+    <button class="adm-tab active" onclick="switchTab('content')">Контент</button>
+    <button class="adm-tab" onclick="switchTab('photos')">Фото</button>
+    <button class="adm-tab" onclick="switchTab('contacts')">Контакти</button>
+    <button class="adm-tab" onclick="switchTab('settings')">Налаштування</button>
+  </div>
+
+  <!-- CONTENT TAB -->
+  <div class="adm-content">
+    <div class="adm-pane active" id="pane-content">
+
+      <div class="adm-section">
+        <div class="adm-section-title">Hero секція</div>
+        <div class="adm-field">
+          <label class="adm-label">Назва компанії</label>
+          <input class="adm-input" id="edit-brand" value="LUMIS" oninput="liveUpdate()">
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Підзаголовок Hero</label>
+          <textarea class="adm-textarea" id="edit-hero-sub" oninput="liveUpdate()">Виготовляємо фотозони, лайтбокси, наліпки, об'ємні літери, неонові вивіски та індивідуальні замовлення</textarea>
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Eyebrow (над заголовком)</label>
+          <input class="adm-input" id="edit-eyebrow" value="Рекламна продукція · Київ" oninput="liveUpdate()">
+        </div>
+      </div>
+
+      <div class="adm-section">
+        <div class="adm-section-title">Секція "Про нас"</div>
+        <div class="adm-field">
+          <label class="adm-label">Заголовок</label>
+          <input class="adm-input" id="edit-about-title" value="Світло — це наша мова" oninput="liveUpdate()">
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Текст абзац 1</label>
+          <textarea class="adm-textarea" id="edit-about-p1" oninput="liveUpdate()">LUMIS — студія рекламної продукції у Києві. Ми спеціалізуємось на виготовленні вивісок, фотозон та рекламних конструкцій, які привертають увагу та підсилюють образ бренду.</textarea>
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Текст абзац 2</label>
+          <textarea class="adm-textarea" id="edit-about-p2" oninput="liveUpdate()">Від ескізу до готового виробу — контролюємо кожен етап. Використовуємо якісні матеріали та сучасне обладнання для точного й довговічного результату.</textarea>
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Статистика (число)</label>
+          <input class="adm-input" id="edit-stat-num" value="5+" oninput="liveUpdate()">
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Статистика (підпис)</label>
+          <input class="adm-input" id="edit-stat-label" value="Років досвіду" oninput="liveUpdate()">
+        </div>
+      </div>
+
+      <div class="adm-section">
+        <div class="adm-section-title">Портфоліо — назви проєктів</div>
+        <div id="portfolio-titles"></div>
+      </div>
+
+      <div class="adm-section">
+        <div class="adm-section-title">Процес — кроки</div>
+        <div id="process-steps-edit"></div>
+      </div>
+
+      <button class="adm-btn" onclick="saveAll()">Зберегти зміни</button>
+    </div>
+
+    <!-- PHOTOS TAB -->
+    <div class="adm-pane" id="pane-photos">
+      <div class="adm-section">
+        <div class="adm-section-title">Портфоліо — фотографії</div>
+        <div class="adm-photo-grid" id="portfolio-photos">
+          <!-- generated by JS -->
+        </div>
+        <div style="font-size:9px;color:var(--gray);letter-spacing:0.1em;line-height:1.8;">
+          Клікніть на слот щоб завантажити фото.<br>Формати: JPG, PNG, WEBP. Макс. 5MB.
+        </div>
+      </div>
+
+      <div class="adm-section">
+        <div class="adm-section-title">Карусель — слайди</div>
+        <div class="adm-photo-grid" id="carousel-photos"></div>
+        <div style="font-size:9px;color:var(--gray);letter-spacing:0.1em;line-height:1.8;margin-bottom:10px;">
+          Завантажте фото для кожної категорії або додайте новий слайд.
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="adm-btn-sm" onclick="addCarouselSlide()" style="flex:1;min-width:120px;">+ Додати слайд</button>
+          <button class="adm-btn-sm" onclick="removeLastCarouselSlide()" style="flex:1;min-width:120px;background:transparent;border-color:rgba(200,100,100,0.4);color:rgba(200,100,100,0.7);">− Видалити останній</button>
+        </div>
+        <div style="font-size:9px;color:var(--gray);margin-top:8px;letter-spacing:0.08em;">
+          Слайди: <span id="carousel-count" style="color:var(--gold);">6</span>
+        </div>
+      </div>
+
+      <button class="adm-btn" onclick="saveAll()">Зберегти</button>
+    </div>
+
+    <!-- CONTACTS TAB -->
+    <div class="adm-pane" id="pane-contacts">
+      <div class="adm-section">
+        <div class="adm-section-title">Контактні дані</div>
+        <div class="adm-field">
+          <label class="adm-label">Телефон</label>
+          <input class="adm-input" id="edit-phone" value="+38 (044) 123-45-67" oninput="liveUpdate()">
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Email</label>
+          <input class="adm-input" id="edit-email" value="hello@lumis.ua" oninput="liveUpdate()">
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Адреса</label>
+          <input class="adm-input" id="edit-address" value="Київ, вул. Хрещатик, 1" oninput="liveUpdate()">
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Графік роботи</label>
+          <input class="adm-input" id="edit-hours" value="Пн–Пт, 9:00–18:00" oninput="liveUpdate()">
+        </div>
+      </div>
+
+      <div class="adm-section">
+        <div class="adm-section-title">Соціальні мережі</div>
+        <div class="adm-field">
+          <label class="adm-label">Instagram URL</label>
+          <input class="adm-input" id="edit-instagram" value="https://instagram.com/lumis.ua" oninput="liveUpdate()">
+        </div>
+      </div>
+
+      <div class="adm-section">
+        <div class="adm-section-title">Footer</div>
+        <div class="adm-field">
+          <label class="adm-label">Копірайт</label>
+          <input class="adm-input" id="edit-copyright" value="© 2024 LUMIS. Всі права захищені." oninput="liveUpdate()">
+        </div>
+      </div>
+
+      <button class="adm-btn" onclick="saveAll()">Зберегти</button>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div class="adm-pane" id="pane-settings">
+      <div class="adm-section">
+        <div class="adm-section-title">Кольори бренду</div>
+        <div class="adm-field">
+          <label class="adm-label">Акцентний колір (золото)</label>
+          <div class="adm-color-row">
+            <input type="color" id="color-gold" value="#c8a96e" oninput="updateColor('gold',this.value)">
+            <input class="adm-input" id="color-gold-hex" value="#c8a96e" oninput="updateColorFromHex('gold',this.value)">
+          </div>
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">Фоновий колір</label>
+          <div class="adm-color-row">
+            <input type="color" id="color-bg" value="#0c0a08" oninput="updateColor('bg',this.value)">
+            <input class="adm-input" id="color-bg-hex" value="#0c0a08" oninput="updateColorFromHex('bg',this.value)">
+          </div>
+        </div>
+      </div>
+
+      <div class="adm-section">
+        <div class="adm-section-title">Відображення секцій</div>
+        <div class="adm-toggle-row">
+          <span class="adm-toggle-label">Показувати карусель категорій</span>
+          <div class="adm-toggle on" id="toggle-carousel" onclick="toggleSection('categories',this)"></div>
+        </div>
+        <div class="adm-toggle-row">
+          <span class="adm-toggle-label">Показувати секцію "Як працюємо"</span>
+          <div class="adm-toggle on" id="toggle-process" onclick="toggleSection('process',this)"></div>
+        </div>
+        <div class="adm-toggle-row">
+          <span class="adm-toggle-label">Показувати іконку Instagram</span>
+          <div class="adm-toggle on" id="toggle-ig" onclick="toggleInstagram(this)"></div>
+        </div>
+        <div class="adm-toggle-row">
+          <span class="adm-toggle-label">Кастомний курсор</span>
+          <div class="adm-toggle on" id="toggle-cursor" onclick="toggleCursor(this)"></div>
+        </div>
+      </div>
+
+      <div class="adm-section">
+        <div class="adm-section-title">Небезпечна зона</div>
+        <button class="adm-btn secondary" onclick="resetAll()">Скинути всі зміни</button>
+        <button class="adm-btn secondary" style="margin-top:8px;color:#c86e6e;border-color:rgba(200,110,110,0.3);" onclick="changePass()">Змінити пароль</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="adm-toast" id="adm-toast">Збережено</div>
+
+</body>
+</html>

@@ -1,0 +1,827 @@
+{
+ "320": {
+  "vw": 320,
+  "docScrollW": 320,
+  "bodyScrollW": 320,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px hero-eyebrow": 1,
+   "10px section-label": 6,
+   "10px service-num": 6,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10px SPAN": 1,
+   "10px file-drop-hint": 1,
+   "10.5px SPAN": 4,
+   "10px footer-copy": 1
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 113x36",
+   "cat-link 131x33",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 172x20",
+   "contact-email-link 129x20",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 181x19",
+   "A 79x36",
+   "A 70x36",
+   "A 88x36"
+  ],
+  "pad": {
+   "about": "48px 14px",
+   "process": "48px 14px",
+   "categories": "48px 0px",
+   "carousel": "0px 12px 14px",
+   "contact": "48px 14px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": false,
+   "carArrows": false,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 84,
+   "titleR": 236,
+   "btnBottom": 600,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "#calc-btn: r14 b70 44px",
+   "#theme-toggle-btn: r14 b18 44px"
+  ],
+  "inputFont": "16px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "360": {
+  "vw": 360,
+  "docScrollW": 360,
+  "bodyScrollW": 360,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px hero-eyebrow": 1,
+   "10px section-label": 6,
+   "10px service-num": 6,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10px SPAN": 1,
+   "10px file-drop-hint": 1,
+   "10.5px SPAN": 4,
+   "10px footer-copy": 1
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 113x36",
+   "cat-link 131x33",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 172x20",
+   "contact-email-link 129x20",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 181x19",
+   "A 79x36",
+   "A 70x36",
+   "A 88x36"
+  ],
+  "pad": {
+   "about": "48px 14px",
+   "process": "48px 14px",
+   "categories": "48px 0px",
+   "carousel": "0px 12px 14px",
+   "contact": "48px 14px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": false,
+   "carArrows": false,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 94,
+   "titleR": 266,
+   "btnBottom": 603,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "#calc-btn: r14 b70 44px",
+   "#theme-toggle-btn: r14 b18 44px"
+  ],
+  "inputFont": "16px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "375": {
+  "vw": 375,
+  "docScrollW": 375,
+  "bodyScrollW": 375,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px hero-eyebrow": 1,
+   "10px section-label": 6,
+   "10px service-num": 6,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10px SPAN": 1,
+   "10px file-drop-hint": 1,
+   "10.5px SPAN": 4,
+   "10px footer-copy": 1
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 113x36",
+   "cat-link 131x33",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 172x20",
+   "contact-email-link 129x20",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 181x19",
+   "A 79x36",
+   "A 70x36",
+   "A 88x36"
+  ],
+  "pad": {
+   "about": "48px 14px",
+   "process": "48px 14px",
+   "categories": "48px 0px",
+   "carousel": "0px 12px 14px",
+   "contact": "48px 14px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": false,
+   "carArrows": false,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 99,
+   "titleR": 276,
+   "btnBottom": 604,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "#calc-btn: r14 b70 44px",
+   "#theme-toggle-btn: r14 b18 44px"
+  ],
+  "inputFont": "16px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "390": {
+  "vw": 390,
+  "docScrollW": 390,
+  "bodyScrollW": 390,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px hero-eyebrow": 1,
+   "10px section-label": 6,
+   "10px service-num": 6,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10px SPAN": 1,
+   "10px file-drop-hint": 1,
+   "10.5px SPAN": 4,
+   "10px footer-copy": 1
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 113x36",
+   "cat-link 131x33",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 172x20",
+   "contact-email-link 129x20",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 181x19",
+   "A 79x36",
+   "A 70x36",
+   "A 88x36"
+  ],
+  "pad": {
+   "about": "56px 16px",
+   "process": "56px 16px",
+   "categories": "48px 0px",
+   "carousel": "0px 12px 14px",
+   "contact": "56px 16px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": false,
+   "carArrows": false,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 96,
+   "titleR": 294,
+   "btnBottom": 595,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "#calc-btn: r14 b70 44px",
+   "#theme-toggle-btn: r14 b18 44px"
+  ],
+  "inputFont": "16px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "430": {
+  "vw": 430,
+  "docScrollW": 430,
+  "bodyScrollW": 430,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px hero-eyebrow": 1,
+   "10px section-label": 6,
+   "10px service-num": 6,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10px SPAN": 1,
+   "10px file-drop-hint": 1,
+   "10.5px SPAN": 4,
+   "10px footer-copy": 1
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 113x36",
+   "cat-link 131x33",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 172x20",
+   "contact-email-link 129x20",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 181x19",
+   "A 79x36",
+   "A 70x36",
+   "A 88x36"
+  ],
+  "pad": {
+   "about": "56px 16px",
+   "process": "56px 16px",
+   "categories": "48px 0px",
+   "carousel": "0px 12px 14px",
+   "contact": "56px 16px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": false,
+   "carArrows": false,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 116,
+   "titleR": 314,
+   "btnBottom": 595,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "#calc-btn: r14 b70 44px",
+   "#theme-toggle-btn: r14 b18 44px"
+  ],
+  "inputFont": "16px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "768": {
+  "vw": 768,
+  "docScrollW": 768,
+  "bodyScrollW": 768,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px hero-eyebrow": 1,
+   "10px SPAN": 2,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10.5px file-drop-hint": 1,
+   "10.5px SPAN": 4
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 122x36",
+   "cat-link 131x33",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 191x22",
+   "contact-email-link 144x22",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 181x19",
+   "A 79x36",
+   "A 70x36",
+   "A 88x36"
+  ],
+  "pad": {
+   "about": "64px 20px",
+   "process": "64px 20px",
+   "categories": "56px 0px",
+   "carousel": "0px 16px 16px",
+   "contact": "64px 20px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 2,
+   "portfolio": 2,
+   "steps": 2
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 258,
+   "titleR": 510,
+   "btnBottom": 611,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "#calc-btn: r16 b76 44px",
+   "#theme-toggle-btn: r16 b24 44px"
+  ],
+  "inputFont": "16px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "1024": {
+  "vw": 1024,
+  "docScrollW": 1024,
+  "bodyScrollW": 1024,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px SPAN": 2,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10.5px file-drop-hint": 1,
+   "10.5px SPAN": 4
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 139x36",
+   "A 75x12",
+   "A 73x12",
+   "A 66x12",
+   "A 84x12",
+   "nav-cta 134x34",
+   "cat-link 131x16",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 191x22",
+   "contact-email-link 144x22",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1"
+  ],
+  "pad": {
+   "about": "100px 40px",
+   "process": "100px 40px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "100px 40px"
+  },
+  "shown": {
+   "hamburger": false,
+   "navLinks": true,
+   "navCta": true,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 2,
+   "portfolio": 3,
+   "steps": 2
+  },
+  "hero": {
+   "heroH": 900,
+   "titleL": 310,
+   "titleR": 715,
+   "btnBottom": 701,
+   "vh": 900
+  },
+  "fixedBtns": [
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "14px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "1280": {
+  "vw": 1280,
+  "docScrollW": 1280,
+  "bodyScrollW": 1280,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px SPAN": 2,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10.5px file-drop-hint": 1,
+   "10.5px SPAN": 4
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 139x36",
+   "A 75x12",
+   "A 73x12",
+   "A 66x12",
+   "A 84x12",
+   "nav-cta 134x34",
+   "cat-link 131x16",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 191x22",
+   "contact-email-link 144x22",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "120px 60px"
+  },
+  "shown": {
+   "hamburger": false,
+   "navLinks": true,
+   "navCta": true,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 3,
+   "portfolio": 3,
+   "steps": 4
+  },
+  "hero": {
+   "heroH": 900,
+   "titleL": 422,
+   "titleR": 858,
+   "btnBottom": 705,
+   "vh": 900
+  },
+  "fixedBtns": [
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "14px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "1440": {
+  "vw": 1440,
+  "docScrollW": 1440,
+  "bodyScrollW": 1440,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px SPAN": 2,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10.5px file-drop-hint": 1,
+   "10.5px SPAN": 4
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 139x36",
+   "A 75x12",
+   "A 73x12",
+   "A 66x12",
+   "A 84x12",
+   "nav-cta 134x34",
+   "cat-link 131x16",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 191x22",
+   "contact-email-link 144x22",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1"
+  ],
+  "pad": {
+   "about": "140px 80px",
+   "process": "140px 80px",
+   "categories": "120px 0px",
+   "carousel": "0px 80px 24px",
+   "contact": "140px 80px"
+  },
+  "shown": {
+   "hamburger": false,
+   "navLinks": true,
+   "navCta": true,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 3,
+   "portfolio": 3,
+   "steps": 4
+  },
+  "hero": {
+   "heroH": 900,
+   "titleL": 487,
+   "titleR": 953,
+   "btnBottom": 709,
+   "vh": 900
+  },
+  "fixedBtns": [
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "14px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "1920": {
+  "vw": 1920,
+  "docScrollW": 1920,
+  "bodyScrollW": 1920,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px SPAN": 2,
+   "10px about-stat-label": 1,
+   "10px pi-label-type": 6,
+   "10px contact-item-label": 4,
+   "10.5px file-drop-hint": 1,
+   "10.5px SPAN": 4
+  },
+  "taps": [
+   "skip-link 162x38",
+   "nav-logo 139x36",
+   "A 75x12",
+   "A 73x12",
+   "A 66x12",
+   "A 84x12",
+   "nav-cta 134x34",
+   "cat-link 131x16",
+   "car-dot active 40x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "car-dot 24x24",
+   "contact-phone-link 191x22",
+   "contact-email-link 144x22",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1",
+   "INPUT 1x1"
+  ],
+  "pad": {
+   "about": "140px 80px",
+   "process": "140px 80px",
+   "categories": "120px 0px",
+   "carousel": "0px 80px 24px",
+   "contact": "140px 80px"
+  },
+  "shown": {
+   "hamburger": false,
+   "navLinks": true,
+   "navCta": true,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": false
+  },
+  "cols": {
+   "services": 3,
+   "portfolio": 3,
+   "steps": 4
+  },
+  "hero": {
+   "heroH": 900,
+   "titleL": 727,
+   "titleR": 1193,
+   "btnBottom": 709,
+   "vh": 900
+  },
+  "fixedBtns": [
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "14px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ }
+}

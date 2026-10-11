@@ -1,0 +1,90 @@
+ "form_controls_hit_test": {
+  "Ваше ім'я": "COVERED BY fileInput",
+  "+38 (0__)": "COVERED BY fileInput",
+  "Лайтбокс, неон, фотозо": "COVERED BY fileInput",
+  "Опишіть ваш проєкт...": "COVERED BY fileInput",
+  "method-email": "COVERED BY fileInput",
+  "method-telegram": "COVERED BY fileInput",
+  "method-viber": "COVERED BY fileInput",
+  "method-instagram": "COVERED BY fileInput",
+  "form-submit": "COVERED BY fileInput"
+ },
+ "empty_submit_toast": "ЗАПОВНІТЬ ІМ'Я АБО ТЕЛЕФОН",
+ "xss_via_filename": true,
+ "exe_accepted_in_list": true,
+ "submit_phone_abc_result": "Запит надіслано | МИ ЗВ'ЯЖЕМОСЬ З ВАМИ НАЙБЛИЖЧИМ ЧАСОМ",
+ "network_requests_on_submit": [],
+ "opened": [
+  "https://instagram.com/lumis.ua"
+ ],
+ "email_link": [
+  "/cdn-cgi/l/email-protection#573f323b3b38173b223a3e24792236",
+  "[email protected]"
+ ],
+ "file_drop_zone_border": "none / minH auto / pos static",
+ "file_input_rect": [
+  530,
+  638,
+  "0"
+ ],
+ "body_cursor": "none",
+ "calc_initial_display": "3 200 ₴",
+ "calc_default_mail_price": "н\nДодатково: —\nОрієнтовна ціна: ~2 800 ₴",
+ "calc_3extras_display": "4 275 ₴ disc −225 ₴",
+ "calc_3extras_mail_price": "Київ\nОрієнтовна ціна: ~4 500 ₴",
+ "calc_after_reset": "2 800 ₴ | ext row: +1 700 ₴ | disc: —",
+ "calc_opt_focusable": -1,
+ "calc_closes_on_escape": false,
+ "active_dots_per_card_position": [
+  1,
+  1,
+  1,
+  0,
+  0,
+  1
+ ],
+ "dots_total_vs_cards": [
+  3,
+  6
+ ],
+ "car_card_focusable": -1,
+ "admin_offscreen_inputs_tabbable": "visible",
+ "default_password_shown_on_page": true,
+ "default_password_unlocks": true,
+ "liveUpdate_global": "undefined",
+ "admin_xss_hero_sub": false,
+ "email_edit_applied": "[email protected]",
+ "about_title_edit_applied": "Світло — це наша мова",
+ "localStorage_keys": [
+  "lumis_admin_data"
+ ],
+ "after_reload_eyebrow(visitor)": "РЕКЛАМНА ПРОДУКЦІЯ · КИЇВ",
+ "after_reload_gold": "#c8a96e",
+ "after_reload_process_visible": "block",
+ "pageerrors": [
+  "liveUpdate is not defined",
+  "liveUpdate is not defined",
+  "liveUpdate is not defined",
+  "liveUpdate is not defined",
+  "liveUpdate is not defined"
+ ],
+ "contrast": {
+  "dark": {
+   "gray_on_bg": 2.68,
+   "gray_on_bg2": 2.59,
+   "gray2_on_bg": 5.09,
+   "gold_on_bg": 8.81,
+   "bg_on_gold": 8.81,
+   "white_on_bg": 17.42
+  },
+  "light": {
+   "gray_on_bg": 2.15,
+   "gray_on_bg2": 1.97,
+   "gray2_on_bg": 4.96,
+   "gold_on_bg": 4.1,
+   "bg_on_gold": 4.1,
+   "white_on_bg": 14.3
+  },
+  "light_portfolio_label_on_dark_gradient": 17.42
+ }
+}

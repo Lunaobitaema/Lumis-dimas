@@ -1,0 +1,918 @@
+{
+ "320": {
+  "vw": 320,
+  "docScrollW": 320,
+  "bodyScrollW": 320,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "7.5px hero-eyebrow": 1,
+   "10px hero-sub": 2,
+   "9px btn-primary": 1,
+   "9px btn-outline": 1,
+   "8px section-label": 6,
+   "10px A": 1,
+   "8.5px car-label": 6,
+   "8px service-num": 6,
+   "10px service-desc": 6,
+   "10px feature-row": 5,
+   "8px pi-label-type": 6,
+   "10px step-desc": 4,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 5,
+   "9.5px file-drop-text": 1,
+   "9.5px U": 1,
+   "7.5px file-drop-hint": 1,
+   "9px form-submit": 1,
+   "8px footer-copy": 1,
+   "8px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 113x36",
+   "ig-nav-link 20x20",
+   "hamburger 32x32",
+   "btn-primary 123x36",
+   "btn-outline 123x38",
+   "A 119x15",
+   "A 153x17",
+   "A 126x17",
+   "form-input 292x38",
+   "form-input 292x38",
+   "form-input 292x38",
+   "form-submit 180x38",
+   "A 52x9",
+   "A 45x9",
+   "A 58x9",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "48px 14px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": false,
+   "heroScroll": false,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 84,
+   "titleR": 236,
+   "btnBottom": 584,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "11px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "360": {
+  "vw": 360,
+  "docScrollW": 360,
+  "bodyScrollW": 360,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "7.5px hero-eyebrow": 1,
+   "10px hero-sub": 2,
+   "9px btn-primary": 1,
+   "9px btn-outline": 1,
+   "8px section-label": 6,
+   "10px A": 1,
+   "8.5px car-label": 6,
+   "8px service-num": 6,
+   "10px service-desc": 6,
+   "10px feature-row": 5,
+   "8px pi-label-type": 6,
+   "10px step-desc": 4,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 5,
+   "9.5px file-drop-text": 1,
+   "9.5px U": 1,
+   "7.5px file-drop-hint": 1,
+   "9px form-submit": 1,
+   "8px footer-copy": 1,
+   "8px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 113x36",
+   "ig-nav-link 20x20",
+   "hamburger 32x32",
+   "btn-primary 123x36",
+   "btn-outline 123x38",
+   "A 119x15",
+   "A 153x17",
+   "A 126x17",
+   "form-input 332x38",
+   "form-input 332x38",
+   "form-input 332x38",
+   "form-submit 180x38",
+   "A 52x9",
+   "A 45x9",
+   "A 58x9",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "48px 14px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": false,
+   "heroScroll": false,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 94,
+   "titleR": 266,
+   "btnBottom": 586,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "11px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "375": {
+  "vw": 375,
+  "docScrollW": 375,
+  "bodyScrollW": 375,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "7.5px hero-eyebrow": 1,
+   "10px hero-sub": 2,
+   "9px btn-primary": 1,
+   "9px btn-outline": 1,
+   "8px section-label": 6,
+   "10px A": 1,
+   "8.5px car-label": 6,
+   "8px service-num": 6,
+   "10px service-desc": 6,
+   "10px feature-row": 5,
+   "8px pi-label-type": 6,
+   "10px step-desc": 4,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 5,
+   "9.5px file-drop-text": 1,
+   "9.5px U": 1,
+   "7.5px file-drop-hint": 1,
+   "9px form-submit": 1,
+   "8px footer-copy": 1,
+   "8px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 113x36",
+   "ig-nav-link 20x20",
+   "hamburger 32x32",
+   "btn-primary 123x36",
+   "btn-outline 123x38",
+   "A 119x15",
+   "A 153x17",
+   "A 126x17",
+   "form-input 347x38",
+   "form-input 347x38",
+   "form-input 347x38",
+   "form-submit 180x38",
+   "A 52x9",
+   "A 45x9",
+   "A 58x9",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "48px 14px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": false,
+   "heroScroll": false,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 99,
+   "titleR": 276,
+   "btnBottom": 578,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "11px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "390": {
+  "vw": 390,
+  "docScrollW": 390,
+  "bodyScrollW": 390,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "7.5px hero-eyebrow": 1,
+   "10px hero-sub": 2,
+   "9px btn-primary": 1,
+   "9px btn-outline": 1,
+   "8px section-label": 6,
+   "10px A": 1,
+   "8.5px car-label": 6,
+   "8px service-num": 6,
+   "10px service-desc": 6,
+   "10px feature-row": 5,
+   "8px pi-label-type": 6,
+   "10px step-desc": 4,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 5,
+   "9.5px file-drop-text": 1,
+   "9.5px U": 1,
+   "7.5px file-drop-hint": 1,
+   "9px form-submit": 1,
+   "8px footer-copy": 1,
+   "8px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 113x36",
+   "ig-nav-link 20x20",
+   "hamburger 32x32",
+   "btn-primary 123x36",
+   "btn-outline 123x38",
+   "A 119x15",
+   "A 153x17",
+   "A 126x17",
+   "form-input 358x38",
+   "form-input 358x38",
+   "form-input 358x38",
+   "form-submit 180x38",
+   "A 52x9",
+   "A 45x9",
+   "A 58x9",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "56px 16px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": false,
+   "heroScroll": false,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 96,
+   "titleR": 294,
+   "btnBottom": 581,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "11px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "430": {
+  "vw": 430,
+  "docScrollW": 430,
+  "bodyScrollW": 430,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "7.5px hero-eyebrow": 1,
+   "10px hero-sub": 2,
+   "9px btn-primary": 1,
+   "9px btn-outline": 1,
+   "8px section-label": 6,
+   "10px A": 1,
+   "8.5px car-label": 6,
+   "8px service-num": 6,
+   "10px service-desc": 6,
+   "10px feature-row": 5,
+   "8px pi-label-type": 6,
+   "10px step-desc": 4,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 5,
+   "9.5px file-drop-text": 1,
+   "9.5px U": 1,
+   "7.5px file-drop-hint": 1,
+   "9px form-submit": 1,
+   "8px footer-copy": 1,
+   "8px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 113x36",
+   "ig-nav-link 20x20",
+   "hamburger 32x32",
+   "btn-primary 123x36",
+   "btn-outline 123x38",
+   "A 119x15",
+   "A 153x17",
+   "A 126x17",
+   "form-input 398x38",
+   "form-input 398x38",
+   "form-input 398x38",
+   "form-submit 180x38",
+   "A 52x9",
+   "A 45x9",
+   "A 58x9",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "56px 16px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": false,
+   "heroScroll": false,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 1,
+   "portfolio": 1,
+   "steps": 1
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 116,
+   "titleR": 314,
+   "btnBottom": 581,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "11px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "768": {
+  "vw": 768,
+  "docScrollW": 768,
+  "bodyScrollW": 768,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "8px hero-eyebrow": 1,
+   "10px btn-primary": 1,
+   "10px btn-outline": 1,
+   "7.5px SPAN": 1,
+   "8.5px section-label": 6,
+   "10px A": 1,
+   "9px car-label": 6,
+   "9px service-num": 6,
+   "10px service-desc": 6,
+   "10px feature-row": 5,
+   "8px pi-label-type": 6,
+   "10px step-desc": 4,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 1,
+   "10px file-drop-text": 1,
+   "10px U": 1,
+   "9px file-drop-hint": 1,
+   "8.5px SPAN": 4,
+   "10px form-submit": 1,
+   "9px footer-copy": 1,
+   "9px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 122x36",
+   "ig-nav-link 20x20",
+   "hamburger 32x32",
+   "btn-primary 143x39",
+   "A 119x15",
+   "A 191x22",
+   "A 158x22",
+   "A 58x10",
+   "A 51x10",
+   "A 65x10",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "64px 20px"
+  },
+  "shown": {
+   "hamburger": true,
+   "navLinks": false,
+   "navCta": false,
+   "catTitle": true,
+   "aboutStat": false,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 2,
+   "portfolio": 2,
+   "steps": 2
+  },
+  "hero": {
+   "heroH": 800,
+   "titleL": 258,
+   "titleR": 510,
+   "btnBottom": 605,
+   "vh": 800
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "12px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "1024": {
+  "vw": 1024,
+  "docScrollW": 1024,
+  "bodyScrollW": 1024,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px A": 5,
+   "10px nav-cta": 1,
+   "9px hero-eyebrow": 1,
+   "10px btn-primary": 1,
+   "10px btn-outline": 1,
+   "7.5px SPAN": 1,
+   "8.5px section-label": 6,
+   "9px service-num": 6,
+   "8px about-stat-label": 1,
+   "8px pi-label-type": 6,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 1,
+   "9px file-drop-hint": 1,
+   "9px SPAN": 4,
+   "10px form-submit": 1,
+   "9px footer-copy": 1,
+   "9px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 139x36",
+   "A 68x11",
+   "A 66x11",
+   "A 60x11",
+   "A 76x11",
+   "ig-nav-link 20x20",
+   "nav-cta 126x33",
+   "A 119x15",
+   "A 191x22",
+   "A 158x22",
+   "A 58x10",
+   "A 51x10",
+   "A 65x10",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "100px 40px"
+  },
+  "shown": {
+   "hamburger": false,
+   "navLinks": true,
+   "navCta": true,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 2,
+   "portfolio": 3,
+   "steps": 2
+  },
+  "hero": {
+   "heroH": 900,
+   "titleL": 310,
+   "titleR": 715,
+   "btnBottom": 685,
+   "vh": 900
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "12px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "1280": {
+  "vw": 1280,
+  "docScrollW": 1280,
+  "bodyScrollW": 1280,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px A": 5,
+   "10px nav-cta": 1,
+   "9px hero-eyebrow": 1,
+   "10px btn-primary": 1,
+   "10px btn-outline": 1,
+   "7.5px SPAN": 1,
+   "8.5px section-label": 6,
+   "9px service-num": 6,
+   "8px about-stat-label": 1,
+   "8px pi-label-type": 6,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 1,
+   "9px file-drop-hint": 1,
+   "9px SPAN": 4,
+   "10px form-submit": 1,
+   "9px footer-copy": 1,
+   "9px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 139x36",
+   "A 68x11",
+   "A 66x11",
+   "A 60x11",
+   "A 76x11",
+   "ig-nav-link 20x20",
+   "nav-cta 126x33",
+   "A 119x15",
+   "A 191x22",
+   "A 158x22",
+   "A 58x10",
+   "A 51x10",
+   "A 65x10",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "120px 60px"
+  },
+  "shown": {
+   "hamburger": false,
+   "navLinks": true,
+   "navCta": true,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 3,
+   "portfolio": 3,
+   "steps": 4
+  },
+  "hero": {
+   "heroH": 900,
+   "titleL": 422,
+   "titleR": 858,
+   "btnBottom": 689,
+   "vh": 900
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "12px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "1440": {
+  "vw": 1440,
+  "docScrollW": 1440,
+  "bodyScrollW": 1440,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px A": 5,
+   "10px nav-cta": 1,
+   "9px hero-eyebrow": 1,
+   "10px btn-primary": 1,
+   "10px btn-outline": 1,
+   "7.5px SPAN": 1,
+   "8.5px section-label": 6,
+   "9px service-num": 6,
+   "8px about-stat-label": 1,
+   "8px pi-label-type": 6,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 1,
+   "9px file-drop-hint": 1,
+   "9px SPAN": 4,
+   "10px form-submit": 1,
+   "9px footer-copy": 1,
+   "9px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 139x36",
+   "A 68x11",
+   "A 66x11",
+   "A 60x11",
+   "A 76x11",
+   "ig-nav-link 20x20",
+   "nav-cta 126x33",
+   "A 119x15",
+   "A 191x22",
+   "A 158x22",
+   "A 58x10",
+   "A 51x10",
+   "A 65x10",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "140px 80px"
+  },
+  "shown": {
+   "hamburger": false,
+   "navLinks": true,
+   "navCta": true,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 3,
+   "portfolio": 3,
+   "steps": 4
+  },
+  "hero": {
+   "heroH": 900,
+   "titleL": 487,
+   "titleR": 953,
+   "btnBottom": 693,
+   "vh": 900
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "12px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ },
+ "1920": {
+  "vw": 1920,
+  "docScrollW": 1920,
+  "bodyScrollW": 1920,
+  "offenders": [],
+  "textOverflow": [],
+  "small": {
+   "10px A": 5,
+   "10px nav-cta": 1,
+   "9px hero-eyebrow": 1,
+   "10px btn-primary": 1,
+   "10px btn-outline": 1,
+   "7.5px SPAN": 1,
+   "8.5px section-label": 6,
+   "9px service-num": 6,
+   "8px about-stat-label": 1,
+   "8px pi-label-type": 6,
+   "8px contact-item-label": 4,
+   "8px form-label": 6,
+   "8px SPAN": 1,
+   "9px file-drop-hint": 1,
+   "9px SPAN": 4,
+   "10px form-submit": 1,
+   "9px footer-copy": 1,
+   "9px A": 3,
+   "9px adm-toast": 1
+  },
+  "taps": [
+   "nav-logo 139x36",
+   "A 68x11",
+   "A 66x11",
+   "A 60x11",
+   "A 76x11",
+   "ig-nav-link 20x20",
+   "nav-cta 126x33",
+   "A 119x15",
+   "A 191x22",
+   "A 158x22",
+   "A 58x10",
+   "A 51x10",
+   "A 65x10",
+   "ig-footer-link 22x22"
+  ],
+  "pad": {
+   "about": "120px 60px",
+   "process": "120px 60px",
+   "categories": "100px 0px",
+   "carousel": "0px 60px 24px",
+   "contact": "140px 80px"
+  },
+  "shown": {
+   "hamburger": false,
+   "navLinks": true,
+   "navCta": true,
+   "catTitle": true,
+   "aboutStat": true,
+   "heroScroll": true,
+   "carArrows": true,
+   "adminBtn": true
+  },
+  "cols": {
+   "services": 3,
+   "portfolio": 3,
+   "steps": 4
+  },
+  "hero": {
+   "heroH": 900,
+   "titleL": 727,
+   "titleR": 1193,
+   "btnBottom": 693,
+   "vh": 900
+  },
+  "fixedBtns": [
+   "button[title=\"Адмін панель\"]: r28 b136 48px",
+   "#calc-btn: r28 b84 48px",
+   "#theme-toggle-btn: r28 b28 48px"
+  ],
+  "inputFont": "12px",
+  "errors": [],
+  "external": [
+   "https://fonts.googleapis.com/css2",
+   "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+   "https://images.unsplash.com/photo-1519741497674-611481863552",
+   "https://images.unsplash.com/photo-1542621334-a254cf47733d",
+   "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+  ]
+ }
+}

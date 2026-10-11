@@ -1,0 +1,1 @@
+{"original": {"DOMContentLoaded_ms": 340, "load_ms": 485, "FCP_ms": 248, "dom_nodes": 858, "html_kb": 151.3, "gzip_kb": 30.6}, "fixed": {"DOMContentLoaded_ms": 445, "load_ms": 624, "FCP_ms": 292, "dom_nodes": 996, "html_kb": 194.0, "gzip_kb": 43.5}}
